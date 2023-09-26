@@ -9,7 +9,10 @@ type Props = {
 const TypographyH2 = ({ className, children }: Props) => {
 	return (
 		<h2
-			className={cn('scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0', className)}>
+			className={cn(
+				'scroll-m-20 font-heading text-2xl font-normal tracking-tight transition-colors first:mt-0 md:text-3xl',
+				className
+			)}>
 			{children}
 		</h2>
 	)
