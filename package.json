@@ -13,6 +13,7 @@
 		"@radix-ui/react-dropdown-menu": "^2.0.6",
 		"@radix-ui/react-progress": "^1.0.3",
 		"@radix-ui/react-scroll-area": "^1.0.5",
+		"@radix-ui/react-select": "^2.0.0",
 		"@radix-ui/react-separator": "^1.0.3",
 		"@radix-ui/react-slot": "^1.0.2",
 		"@radix-ui/react-tooltip": "^1.0.7",
@@ -21,6 +22,7 @@
 		"clsx": "^2.0.0",
 		"lucide-react": "^0.279.0",
 		"next": "latest",
+		"next-i18n-router": "^4.0.0",
 		"react": "latest",
 		"react-dom": "latest",
 		"swr": "^2.2.4",
@@ -38,6 +40,7 @@
 		"postcss": "latest",
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.3.0",
+		"server-only": "^0.0.1",
 		"tailwindcss": "latest",
 		"typescript": "latest"
 	}

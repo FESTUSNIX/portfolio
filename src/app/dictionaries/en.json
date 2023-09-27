@@ -1,0 +1,10 @@
+{
+	"contactHeader": {
+		"prefix": "Contact me at",
+		"sufix": "or on"
+	},
+	"spotify": {
+		"listening": "Currently vibing to",
+		"notListening": "Not Listening"
+	}
+}

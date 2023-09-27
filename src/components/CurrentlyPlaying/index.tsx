@@ -8,15 +8,20 @@ import TypographyH2 from '../ui/Typography/H2'
 import TypographyMuted from '../ui/Typography/Muted'
 import { Skeleton } from '../ui/skeleton'
 
-type Props = {}
+type Props = {
+	dict: {
+		listening: string
+		notListening: string
+	}
+}
 
-const CurrentlyPlaying = (props: Props) => {
+const CurrentlyPlaying = ({ dict }: Props) => {
 	const fetcher = (url: string) => fetch(url).then(r => r.json())
 	let { data, isLoading } = useSWR('/api/spotify', fetcher)
 
 	return (
 		<div className='mt-auto'>
-			{!isLoading && data?.isPlaying && <TypographyH2 className='mb-6'>Currently vibing to</TypographyH2>}
+			{!isLoading && data?.isPlaying && <TypographyH2 className='mb-6'>{dict.listening}</TypographyH2>}
 
 			{isLoading && <Skeleton className='mb-6 h-7 w-48' />}
 
@@ -43,7 +48,7 @@ const CurrentlyPlaying = (props: Props) => {
 					{isLoading && <Skeleton className='h-12 w-12' />}
 
 					<div className=''>
-						<p className='font-bold'>{!isLoading && (data?.isPlaying ? data.title : 'Not Listening')}</p>
+						<p className='font-bold'>{!isLoading && (data?.isPlaying ? data.title : dict.notListening)}</p>
 						<TypographyMuted className='text-sm'>
 							{!isLoading && (data?.isPlaying ? data.artist : 'Spotify')}
 						</TypographyMuted>
