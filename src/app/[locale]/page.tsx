@@ -1,5 +1,6 @@
 import CurrentlyPlaying from '@/components/CurrentlyPlaying'
 import LanguageChanger from '@/components/LanguageChanger'
+import ThemeSwitch from '@/components/ThemeSwitch'
 import TypographyH2 from '@/components/ui/Typography/H2'
 import { contactInfo } from '@/constants/contactInfo'
 import { socialLinks } from '@/constants/socialLinks'
@@ -18,7 +19,10 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 					<h2 className='text-muted-foreground'>aka Festus(nix)</h2>
 				</div>
 
-				<LanguageChanger />
+				<div className='flex flex-col gap-1'>
+					<LanguageChanger />
+					<ThemeSwitch />
+				</div>
 			</div>
 
 			<div className='my-auto py-24'>

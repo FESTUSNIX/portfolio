@@ -2,6 +2,7 @@ import { i18nConfig } from '@/i18nConfig'
 import type { Metadata } from 'next'
 import { Montserrat, Oswald } from 'next/font/google'
 import '../globals.css'
+import Providers from '@/components/Providers'
 
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-heading' })
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-body' })
@@ -24,7 +25,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang={locale} className='dark'>
-			<body className={`${oswald.variable} ${montserrat.variable}`}>{children}</body>
+			<body className={`${oswald.variable} ${montserrat.variable}`}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	)
 }
