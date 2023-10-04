@@ -7,12 +7,13 @@ import { socialLinks } from '@/constants/socialLinks'
 import { Locales } from '@/i18nConfig'
 import Link from 'next/link'
 import { getDictionary } from './dictionaries'
+import TypographyMuted from '@/components/ui/Typography/Muted'
 
 export default async function Home({ params: { locale } }: { params: { locale: Locales } }) {
 	const dict = await getDictionary(locale)
 
 	return (
-		<main className='wrapper flex min-h-screen flex-col py-12 md:py-24 '>
+		<main className='wrapper flex min-h-screen flex-col py-12 md:py-24'>
 			<div className='flex justify-between'>
 				<div className='pr-8'>
 					<h1 className='font-heading text-5xl font-black uppercase tracking-tight'>Mateusz Hada</h1>
@@ -50,6 +51,8 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 			</div>
 
 			<CurrentlyPlaying dict={{ listening: dict.spotify.listening, notListening: dict.spotify.notListening }} />
+
+			<TypographyMuted className='mx-auto mt-8 text-center'>Normal portfolio progress: 6% :)</TypographyMuted>
 		</main>
 	)
 }
