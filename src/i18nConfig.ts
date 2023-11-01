@@ -8,6 +8,5 @@ export const locales = localesReadonlyArray.concat()
 export const i18nConfig: Config = {
 	locales: locales,
 	defaultLocale: 'en',
-	prefixDefault: true,
 	routingStrategy: 'dynamicSegment'
 }
