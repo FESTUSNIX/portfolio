@@ -1,4 +1,12 @@
 {
+	"pageMeta": {
+		"title": "Mateusz Hada | Web Developer",
+		"description": "Crafting seamless digital experiences that captivate and innovate. I'm Mateusz, a passionate Web Developer & Freelancer, turning ideas into realities."
+	},
+	"description": "Crafting seamless digital experiences that captivate and innovate. I'm a passionate Web Developer & Freelancer based in Poland, turning ideas into interactive realities. Let's build something extraordinary together.",
+	"projects": {
+		"heading": "Check out my featured work"
+	},
 	"contactHeader": {
 		"prefix": "Contact me at",
 		"sufix": "or on"

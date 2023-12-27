@@ -1,4 +1,12 @@
 {
+	"pageMeta": {
+		"title": "Mateusz Hada | Web Developer",
+		"description": "Nowoczesne, interaktywne strony i aplikacje internetowe dostępne dla każdego. Tworzę unikalne rozwiązania, skrojone na miarę Twoich potrzeb."
+	},
+	"description": "Tworzę nowoczesne, interaktywne strony i aplikacje internetowe dostępne dla każdego. Jestem Web Developerem i Freelancerem działającym na terenie Polski, który zamieni twój pomysł w rzeczywistość. Zbudujmy coś niezwykłego razem!",
+	"projects": {
+		"heading": "Wyróżnione projekty"
+	},
 	"contactHeader": {
 		"prefix": "Skontaktuj się ze mną pod adresem",
 		"sufix": "lub na"

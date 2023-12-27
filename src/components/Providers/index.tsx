@@ -1,6 +1,5 @@
 'use client'
 
-import { ThemeProvider } from 'next-themes'
 import React from 'react'
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
 }
 
 const Providers = ({ children }: Props) => {
-	return <ThemeProvider attribute='class'>{children}</ThemeProvider>
+	return children
 }
 
 export default Providers

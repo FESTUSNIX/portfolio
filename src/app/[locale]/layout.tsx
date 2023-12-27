@@ -1,15 +1,36 @@
-import { i18nConfig } from '@/i18nConfig'
+import Providers from '@/components/Providers'
+import { Locales, i18nConfig } from '@/i18nConfig'
 import type { Metadata } from 'next'
 import { Montserrat, Oswald } from 'next/font/google'
 import '../globals.css'
-import Providers from '@/components/Providers'
+import { getDictionary } from './dictionaries'
 
-const oswald = Oswald({ subsets: ['latin'], variable: '--font-heading' })
-const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-body' })
+const oswald = Oswald({ subsets: ['latin-ext'], variable: '--font-heading' })
+const montserrat = Montserrat({ subsets: ['latin-ext'], variable: '--font-body' })
 
-export const metadata: Metadata = {
-	title: 'Mateusz Hada',
-	description: 'Frontend developer in your area that wants to work with you'
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
+	const {
+		pageMeta: { description, title }
+	} = await getDictionary(locale)
+
+	return {
+		title: {
+			default: 'Mateusz Hada',
+			template: '%s | Web Developer'
+		},
+		metadataBase: new URL('https://mateuszhada.com'),
+		description: description,
+		openGraph: {
+			title: title,
+			description: description,
+			url: 'https://mateuszhada.com',
+			type: 'website'
+		},
+		twitter: {
+			title: title,
+			description: description
+		}
+	}
 }
 
 export function generateStaticParams() {
@@ -21,7 +42,7 @@ export default function RootLayout({
 	params: { locale }
 }: {
 	children: React.ReactNode
-	params: { locale: string }
+	params: { locale: Locales }
 }) {
 	return (
 		<html lang={locale} className='dark'>
