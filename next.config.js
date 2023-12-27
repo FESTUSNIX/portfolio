@@ -6,7 +6,8 @@ const nextConfig = {
 				hostname: 'i.scdn.co'
 			}
 		]
-	}
+	},
+	transpilePackages: ['three']
 }
 
 module.exports = nextConfig

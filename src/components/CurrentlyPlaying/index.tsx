@@ -1,10 +1,10 @@
 'use client'
 
+import { StarParticles } from '@/components/StarParticles'
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { Icons } from '../Icons'
-import TypographyH2 from '../ui/Typography/H2'
 import TypographyMuted from '../ui/Typography/Muted'
 import { Skeleton } from '../ui/skeleton'
 
@@ -20,11 +20,7 @@ const CurrentlyPlaying = ({ dict }: Props) => {
 	let { data, isLoading } = useSWR('/api/spotify', fetcher)
 
 	return (
-		<div className='mt-auto'>
-			{!isLoading && data?.isPlaying && <TypographyH2 className='mb-6'>{dict.listening}</TypographyH2>}
-
-			{isLoading && <Skeleton className='mb-6 h-7 w-48' />}
-
+		<div className='py-12'>
 			<Link
 				target='_blank'
 				rel='noopener noreferer'
@@ -62,6 +58,10 @@ const CurrentlyPlaying = ({ dict }: Props) => {
 					</div>
 
 					{!isLoading && data?.isPlaying && <Icons.spotify className='absolute bottom-2.5 right-4 h-4 w-4' />}
+
+					<div className='absolute inset-0 h-full w-full [clip-path:inset(0)]'>
+						<StarParticles className='fixed' />
+					</div>
 				</div>
 			</Link>
 		</div>
