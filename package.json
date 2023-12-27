@@ -26,7 +26,7 @@
 		"framer-motion": "^10.16.16",
 		"lucide-react": "^0.279.0",
 		"next": "latest",
-		"next-i18n-router": "^4.0.0",
+		"next-i18n-router": "^5.0.2",
 		"next-themes": "^0.2.1",
 		"react": "latest",
 		"react-dom": "latest",
