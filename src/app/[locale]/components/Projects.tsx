@@ -26,7 +26,7 @@ export const Projects = ({ translations }: Props) => {
 							href={project.href}
 							target='_blank'
 							rel='noopener'
-							className='group relative flex flex-row items-center gap-4 overflow-hidden rounded-md border px-4 py-2 text-xl hover:underline'>
+							className='group relative flex flex-col gap-4 overflow-hidden rounded-md border px-4 py-2 text-lg hover:underline sm:flex-row sm:items-center md:text-xl'>
 							<Image src={project.logo} alt={`Logo ${project.name}`} className='h-8 w-8 rounded-sm border p-0.5' />
 
 							<span>{project.name}</span>
