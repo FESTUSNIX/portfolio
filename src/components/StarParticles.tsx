@@ -48,8 +48,8 @@ const Camera = ({ children }: { children: React.ReactNode }) => {
 
 	useFrame(() => {
 		if (cursor.x > 0 && camera.current) {
-			camera.current.rotation.x = (cursor.y * 0.0005) / 10
-			camera.current.rotation.y = (cursor.x * 0.0005) / 10
+			camera.current.rotation.x = (-cursor.y * 0.0005) / 10
+			camera.current.rotation.y = (-cursor.x * 0.0005) / 10
 		}
 	})
 	return (
