@@ -1,9 +1,10 @@
-import { Facebook, Github, type LucideIcon, Twitter, Linkedin } from 'lucide-react'
+import { Icons } from '@/components/Icons'
+import { Facebook, Github, Linkedin, LucideProps, Twitter, type LucideIcon } from 'lucide-react'
 
 type SocialLink = {
 	href: string
 	name: string
-	Icon: LucideIcon
+	Icon: LucideIcon | ((props: LucideProps) => JSX.Element)
 }
 
 export const socialLinks: SocialLink[] = [
@@ -26,5 +27,10 @@ export const socialLinks: SocialLink[] = [
 		href: 'https://www.linkedin.com/in/mateusz-hada-411427276/',
 		name: 'Linkedin',
 		Icon: Linkedin
+	},
+	{
+		href: 'https://www.buymeacoffee.com/mhada',
+		name: 'Buy Me a Coffee',
+		Icon: Icons.buymeacoffee
 	}
 ]
