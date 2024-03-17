@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 	return {
 		title: {
 			default: 'Mateusz Hada',
-			template: '%s | Web Developer'
+			template: '%s | Mateusz Hada'
 		},
 		metadataBase: new URL('https://mateuszhada.com'),
 		description: description,

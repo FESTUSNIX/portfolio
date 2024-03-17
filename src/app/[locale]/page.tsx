@@ -4,6 +4,11 @@ import { Locales } from '@/i18nConfig'
 import { Projects } from './components/Projects'
 import { SocialMedia } from './components/SocialMedia'
 import { getDictionary } from './dictionaries'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+	title: 'Mateusz Hada'
+}
 
 export default async function Home({ params: { locale } }: { params: { locale: Locales } }) {
 	const dict = await getDictionary(locale)
