@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Oswald } from 'next/font/google'
 import '../globals.css'
 import { getDictionary } from './dictionaries'
+import { Analytics } from '@vercel/analytics/react'
 
 const oswald = Oswald({ subsets: ['latin-ext'], variable: '--font-heading' })
 const montserrat = Montserrat({ subsets: ['latin-ext'], variable: '--font-body' })
@@ -48,6 +49,7 @@ export default function RootLayout({
 		<html lang={locale} className='dark'>
 			<body className={`${oswald.variable} ${montserrat.variable}`}>
 				<Providers>{children}</Providers>
+				<Analytics />
 			</body>
 		</html>
 	)
