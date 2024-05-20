@@ -46,7 +46,7 @@ export const Hero = ({ dict }: Props) => {
 							className='h-full w-full object-cover'
 						/>
 					</div>
-					<div className='absolute bottom-[20%] left-[5%] -z-10 w-[50%] max-w-xs translate-y-full overflow-hidden rounded-sm'>
+					<div className='absolute bottom-[20%] left-[5%] -z-10 w-[50%] max-w-64 translate-y-full overflow-hidden rounded-sm lg:max-w-xs xl:max-w-sm'>
 						<Image
 							src='/images/me-vertical.png'
 							alt='Mateusz Hada kickboxing'

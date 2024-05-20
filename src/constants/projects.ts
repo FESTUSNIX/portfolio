@@ -11,6 +11,7 @@ type Project = {
 	name: string
 	logo: any
 	image: StaticImageData
+	tags: string[]
 }
 
 export const projects: Project[] = [
@@ -18,18 +19,21 @@ export const projects: Project[] = [
 		href: 'https://h2otrzebinia.pl/',
 		name: 'H2O Artykuły Wod-Kan, Gaz, C.O.',
 		logo: H2OIcon,
-		image: H2OPreview
+		image: H2OPreview,
+		tags: ['ui/ux design', 'development', 'marketing']
 	},
 	{
 		href: 'https://helenassailing.com/',
 		name: "Helena's Sailing",
 		logo: HelenasSailingIcon,
-		image: HelenasSailingPreview
+		image: HelenasSailingPreview,
+		tags: ['ui/ux design', 'development', 'reservation system']
 	},
 	{
 		href: 'https://reklamy.andrzejgotfryd.pl/',
 		name: 'Andrzej Gotfryd Powierzchnie Reklamowe',
 		logo: BillboardsIcon,
-		image: BillboardsPreview
+		image: BillboardsPreview,
+		tags: ['ui/ux design', 'development']
 	}
 ]
