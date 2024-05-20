@@ -1,13 +1,19 @@
 import Providers from '@/components/Providers'
 import { Locales, i18nConfig } from '@/i18nConfig'
-import type { Metadata } from 'next'
-import { Montserrat, Oswald } from 'next/font/google'
-import '../globals.css'
-import { getDictionary } from './dictionaries'
 import { Analytics } from '@vercel/analytics/react'
+import type { Metadata } from 'next'
+import { Oswald } from 'next/font/google'
+import localFont from 'next/font/local'
+import { getDictionary } from './dictionaries'
+import Navbar from '@/components/Navbar'
+import '../globals.css'
 
-const oswald = Oswald({ subsets: ['latin-ext'], variable: '--font-heading' })
-const montserrat = Montserrat({ subsets: ['latin-ext'], variable: '--font-body' })
+const body = Oswald({ subsets: ['latin-ext'], variable: '--font-body' })
+const heading = localFont({
+	src: '../../../public/fonts/TFSpike.ttf',
+	variable: '--font-heading',
+	display: 'swap'
+})
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
 	const {
@@ -46,9 +52,12 @@ export default function RootLayout({
 	params: { locale: Locales }
 }) {
 	return (
-		<html lang={locale} className='dark'>
-			<body className={`${oswald.variable} ${montserrat.variable}`}>
-				<Providers>{children}</Providers>
+		<html lang={locale}>
+			<body className={`${body.variable} ${heading.variable}`}>
+				<Providers>
+					<Navbar />
+					{children}
+				</Providers>
 				<Analytics />
 			</body>
 		</html>

@@ -4,9 +4,9 @@ import { StarParticles } from '@/components/StarParticles'
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
-import { Icons } from '../Icons'
-import TypographyMuted from '../ui/Typography/Muted'
-import { Skeleton } from '../ui/skeleton'
+import { Icons } from './Icons'
+import TypographyMuted from './ui/Typography/Muted'
+import { Skeleton } from './ui/skeleton'
 
 type Props = {
 	dict: {

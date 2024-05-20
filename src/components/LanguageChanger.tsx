@@ -1,18 +1,18 @@
 'use client'
 
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
-    DropdownMenuTrigger
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { Locales, i18nConfig, locales } from '@/i18nConfig'
 import { Globe } from 'lucide-react'
 import { useCurrentLocale } from 'next-i18n-router/client'
 import { usePathname, useRouter } from 'next/navigation'
-import { Icons } from '../Icons'
-import { Button } from '../ui/button'
+import { Icons } from './Icons'
+import { Button } from './ui/button'
 
 const LanguageChanger = () => {
 	const router = useRouter()

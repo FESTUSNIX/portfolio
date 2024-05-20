@@ -26,6 +26,7 @@
 		"clsx": "^2.0.0",
 		"framer-motion": "^10.16.16",
 		"lucide-react": "^0.279.0",
+		"mini-svg-data-uri": "^1.4.4",
 		"next": "latest",
 		"next-i18n-router": "^5.0.2",
 		"next-themes": "^0.2.1",
@@ -48,7 +49,7 @@
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.3.0",
 		"server-only": "^0.0.1",
-		"tailwindcss": "latest",
+		"tailwindcss": "^3.4.3",
 		"typescript": "latest"
 	}
 }
