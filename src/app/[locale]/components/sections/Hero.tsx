@@ -7,7 +7,7 @@ type Props = {
 	dict: Dictionary
 }
 
-export const Hero = ({ dict }: Props) => {
+export const HeroSection = ({ dict }: Props) => {
 	return (
 		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center pt-12 md:pt-24'>
 			<div className='grid-container'>
@@ -72,7 +72,7 @@ export const Hero = ({ dict }: Props) => {
 					</h2>
 				</div>
 			</div>
-			<GridBackground className='bg-grid-large-white/5 md:bg-grid-xl-white/5' />
+			<GridBackground className='bg-grid-large-white/15 md:bg-grid-xl-white/15' />
 		</header>
 	)
 }
