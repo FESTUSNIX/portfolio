@@ -14,7 +14,7 @@ const Navbar = () => {
 		<header
 			className={cn(
 				'grid-container fixed left-0 z-50 mt-2 w-full border-b border-transparent px-0 py-4 duration-300',
-				y > 10 && 'mt-0 border-border bg-background/20 mix-blend-difference backdrop-blur-sm backdrop-sepia-[50%]'
+				y > 10 && 'mt-0 border-border bg-background/20 mix-blend-difference backdrop-blur-sm backdrop-sepia-[25%]'
 			)}>
 			<nav className='relative flex items-center justify-between mix-blend-difference'>
 				<div className='hidden items-center gap-6 lg:flex'>

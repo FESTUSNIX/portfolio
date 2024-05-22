@@ -18,7 +18,7 @@ export const HeroSection = ({ dict }: Props) => {
 						className='flex flex-col fill-foreground font-heading uppercase leading-none text-foreground'
 						aria-hidden>
 						<div className='flex flex-col md:flex-row md:items-end md:justify-between md:gap-16 lg:gap-24 xl:gap-32'>
-							<svg viewBox='0 0 110 13' className='mb-4 w-[30%] min-w-48 shrink-0 grow-0 md:w-1/4'>
+							<svg viewBox='0 0 110 13' className='mb-4 w-[30%] min-w-48 shrink-0 grow-0 md:mb-1 md:w-1/4'>
 								<text x='0' y='12'>
 									Hello, I&apos;m
 								</text>
