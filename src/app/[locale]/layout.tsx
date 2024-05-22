@@ -1,12 +1,13 @@
+import { Footer } from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import Providers from '@/components/Providers'
 import { Locales, i18nConfig } from '@/i18nConfig'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Oswald } from 'next/font/google'
 import localFont from 'next/font/local'
-import { getDictionary } from './dictionaries'
-import Navbar from '@/components/Navbar'
 import '../globals.css'
+import { getDictionary } from './dictionaries'
 
 const body = Oswald({ subsets: ['latin-ext'], variable: '--font-body' })
 const heading = localFont({
@@ -57,6 +58,7 @@ export default function RootLayout({
 				<Providers>
 					<Navbar />
 					{children}
+					<Footer />
 				</Providers>
 				<Analytics />
 			</body>
