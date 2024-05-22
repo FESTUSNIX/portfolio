@@ -5,6 +5,7 @@ import { HeroSection } from './components/sections/Hero'
 import { ProjectsSection } from './components/sections/Projects'
 import { TestimonialsSection } from './components/sections/Testimonials'
 import { getDictionary } from './dictionaries'
+import { ContactCTASection } from './components/sections/ContactCTA'
 
 export const metadata: Metadata = {
 	title: 'Mateusz Hada'
@@ -23,7 +24,9 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 
 			<TestimonialsSection />
 
-			<div className='h-screen'></div>
+			{/* Tech stack section */}
+
+			<ContactCTASection />
 		</main>
 	)
 }
