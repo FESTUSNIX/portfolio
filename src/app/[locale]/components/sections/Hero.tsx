@@ -61,8 +61,7 @@ export const HeroSection = ({ dict }: Props) => {
 					<div className='ml-auto mt-12 w-max md:ml-16 md:mt-24 lg:-ml-16 lg:mt-12 xl:-ml-24'>
 						<ArrowDownLeft
 							className='size-12 stroke-1 md:size-16 md:-rotate-90 lg:size-20 xl:size-24'
-							strokeLinecap='square'
-							strokeLinejoin='miter'
+							strokeLinecap='butt'
 						/>
 					</div>
 

@@ -23,7 +23,7 @@ const Navbar = () => {
 					</Link>
 
 					<div className='flex items-center gap-1.5'>
-						<div className='size-2.5 rounded-full bg-[#3ADC71]' />
+						<div className='animate-blob-pulse size-2.5 rounded-full bg-[#3ADC71]' />
 						<p className='text-sm uppercase'>
 							available <span className='font-bold'>may 2024</span>
 						</p>

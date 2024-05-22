@@ -119,6 +119,11 @@
 	.transition-elastic-out {
 		transition: all 1s var(--elastic-out);
 	}
+	.animate-blob-pulse {
+		box-shadow: 0 0 0 0 rgba(58, 220, 113, 1);
+		transform: scale(1);
+		animation: BlobPulse 2s infinite;
+	}
 }
 
 @layer utilities {
@@ -135,6 +140,22 @@
 		to {
 			scale: 1;
 			opacity: 100;
+		}
+	}
+	@keyframes BlobPulse {
+		0% {
+			transform: scale(0.95);
+			box-shadow: 0 0 0 0 rgba(58, 220, 113, 0.7);
+		}
+
+		70% {
+			transform: scale(1);
+			box-shadow: 0 0 0 6px rgba(58, 220, 113, 0);
+		}
+
+		100% {
+			transform: scale(0.95);
+			box-shadow: 0 0 0 0 rgba(58, 220, 113, 0);
 		}
 	}
 }
