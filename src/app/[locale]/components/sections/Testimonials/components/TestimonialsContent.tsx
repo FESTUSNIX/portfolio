@@ -3,7 +3,7 @@
 import { Testimonial } from '@/constants/TESTIMONIALS'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import { useState } from 'react'
 import { AvatarGroup } from './AvatarGroup'
 
 type Props = {
@@ -11,45 +11,42 @@ type Props = {
 }
 
 export const TestimonialsContent = ({ testimonials }: Props) => {
-	const [index, setIndex] = React.useState(0)
+	const [index, setIndex] = useState(0)
 
 	const testimonial = testimonials[index]
 
 	const handleNext = () => setIndex((index + 1) % testimonials.length)
 	const handlePrevious = () => setIndex((index - 1 + testimonials.length) % testimonials.length)
 
-	const getAvatarsFromTestimonials = (testimonials: Testimonial[]) => {
-		return testimonials.map((testimonial, index) => ({
-			name: testimonial.name,
-			image: testimonial.image
-		}))
-	}
-
 	return (
-		<div>
-			<div className='flex flex-col items-center gap-6 text-center'>
+		<div className='relative py-32'>
+			<div className='flex flex-col items-center gap-6 text-center md:gap-8'>
 				<div className='flex flex-col items-center'>
-					<div className='mb-4 size-16 overflow-hidden rounded-full border bg-secondary'>
+					<div className='mb-4 size-16 overflow-hidden rounded-full border bg-secondary md:size-20'>
 						<Image
 							src={testimonial.image}
 							alt={testimonial.name}
 							width={64}
 							height={64}
-							className='size-full object-cover'
+							className='pointer-events-none size-full object-cover'
 						/>
 					</div>
-					<h3 className='text-xl leading-none'>{testimonial.name}</h3>
-					<p className='text-sm text-muted-foreground'>{testimonial.role}</p>
+					<h3 className='text-xl leading-none lg:text-2xl'>{testimonial.name}</h3>
+					{testimonial.role && (
+						<p className='text-sm font-light text-muted-foreground lg:text-base'>{testimonial.role}</p>
+					)}
 				</div>
 
-				<p className='max-w-md font-light'>{testimonial.quote}</p>
+				<p className='min-h-24 max-w-sm text-pretty text-lg font-light sm:text-xl md:max-w-md lg:max-w-lg lg:text-2xl'>
+					{testimonial.quote}
+				</p>
 
-				<div className='flex items-center gap-1 text-muted-foreground'>
+				<div className='flex items-center gap-1 text-muted-foreground max-sm:-mt-4'>
 					<button onClick={handlePrevious} className='p-2'>
 						<ChevronLeft className='size-5' />
 					</button>
 					<span className='font-light'>
-						{index < 10 ? `0${index + 1}` : index + 1}/{testimonials.length}
+						{index < 9 ? `0${index + 1}` : index + 1}/{testimonials.length}
 					</span>
 					<button onClick={handleNext} className='p-2'>
 						<ChevronRight className='size-5' />
@@ -57,21 +54,37 @@ export const TestimonialsContent = ({ testimonials }: Props) => {
 				</div>
 			</div>
 
-			<AvatarGroup avatars={getAvatarsFromTestimonials(testimonials.slice(0, 3))} updateIndex={setIndex} />
 			<AvatarGroup
-				avatars={getAvatarsFromTestimonials(testimonials.slice(3, 6))}
+				testimonials={testimonials}
 				updateIndex={setIndex}
+				currentIndex={index}
+				range={[0, 3]}
 				direction='bottom'
+				className='absolute -top-8 left-0'
 			/>
 			<AvatarGroup
-				avatars={getAvatarsFromTestimonials(testimonials.slice(6, 9))}
+				testimonials={testimonials}
 				updateIndex={setIndex}
+				currentIndex={index}
+				range={[3, 6]}
+				direction='top'
+				className='absolute -top-4 right-0 md:top-0 lg:top-8'
+			/>
+			<AvatarGroup
+				testimonials={testimonials}
+				updateIndex={setIndex}
+				currentIndex={index}
+				range={[6, 9]}
+				direction='top'
+				className='absolute -bottom-16 left-4 md:-bottom-4 lg:bottom-4 lg:left-[7.5%]'
+			/>
+			<AvatarGroup
+				testimonials={testimonials}
+				updateIndex={setIndex}
+				currentIndex={index}
+				range={[9, 12]}
 				direction='left'
-			/>
-			<AvatarGroup
-				avatars={getAvatarsFromTestimonials(testimonials.slice(9, 12))}
-				updateIndex={setIndex}
-				direction='right'
+				className='absolute -bottom-12 right-0 md:right-12 lg:-bottom-16 lg:right-[15%]'
 			/>
 		</div>
 	)

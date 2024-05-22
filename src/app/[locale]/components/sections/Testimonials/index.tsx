@@ -1,7 +1,6 @@
 import { GridBackground } from '@/components/GridBackground'
 import TypographyH2 from '@/components/ui/Typography/H2'
 import { getTestimonials } from '@/constants/TESTIMONIALS'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { TestimonialsContent } from './components/TestimonialsContent'
 
 type Props = {}

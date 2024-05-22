@@ -1,4 +1,5 @@
 export type Testimonial = {
+	id: number
 	name: string
 	role: string
 	quote: string
@@ -15,12 +16,13 @@ const getRandomPortret = async () => {
 
 	const data = await res.json()
 
-	return data.results[0].picture.thumbnail
+	return data.results[0].picture.large
 }
 
-export const getTestimonials = async () => {
+export const getTestimonials = async (): Promise<Testimonial[]> => {
 	return [
 		{
+			id: 1,
 			name: 'Julian von Dandelion',
 			role: 'CEO at Corvo Bianco',
 			quote:
@@ -28,6 +30,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 2,
 			name: 'Geralt of Rivia',
 			role: 'Witcher',
 			quote:
@@ -35,6 +38,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 3,
 			name: 'Yennefer of Vengerberg',
 			role: 'Lodge of Sorceresses',
 			quote:
@@ -42,6 +46,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 4,
 			name: 'Triss Merigold',
 			role: 'Lodge of Sorceresses',
 			quote:
@@ -49,6 +54,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 5,
 			name: 'Ciri',
 			role: 'Witcher',
 			quote:
@@ -56,6 +62,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 6,
 			name: 'Regis',
 			role: 'Higher Vampire',
 			quote:
@@ -63,6 +70,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 7,
 			name: 'Dandelion',
 			role: 'Bard',
 			quote:
@@ -70,6 +78,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 8,
 			name: 'Zoltan Chivay',
 			role: 'Dwarf',
 			quote:
@@ -77,6 +86,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 9,
 			name: 'Vernon Roche',
 			role: 'Temerian Special Forces',
 			quote:
@@ -84,6 +94,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 10,
 			name: 'Lambert',
 			role: 'Witcher',
 			quote:
@@ -91,6 +102,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 11,
 			name: 'Eskel',
 			role: 'Witcher',
 			quote:
@@ -98,6 +110,7 @@ export const getTestimonials = async () => {
 			image: await getRandomPortret()
 		},
 		{
+			id: 12,
 			name: 'Vesemir',
 			role: 'Witcher',
 			quote:
