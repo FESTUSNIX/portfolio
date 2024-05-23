@@ -6,6 +6,7 @@ import { ProjectsSection } from './components/sections/Projects'
 import { TestimonialsSection } from './components/sections/Testimonials'
 import { getDictionary } from './dictionaries'
 import { ContactCTASection } from './components/sections/ContactCTA'
+import { EmojiBoard } from '@/components/EmojiBoard'
 
 export const metadata: Metadata = {
 	title: 'Mateusz Hada'
@@ -27,6 +28,9 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 			{/* Tech stack section */}
 
 			<ContactCTASection />
+
+			{/* Emoji board */}
+			<EmojiBoard />
 		</main>
 	)
 }
