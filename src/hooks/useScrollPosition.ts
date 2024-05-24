@@ -1,21 +1,16 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import useWindowScroll from 'beautiful-react-hooks/useWindowScroll'
+import { useState } from 'react'
 
 export const useScrollPosition = () => {
 	const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 })
 
-	useEffect(() => {
-		const updatePosition = () => {
-			setScrollPosition({ y: window.scrollY, x: window.scrollX })
-		}
+	const onWindowScroll = useWindowScroll()
 
-		window.addEventListener('scroll', updatePosition)
-
-		updatePosition()
-
-		return () => window.removeEventListener('scroll', updatePosition)
-	}, [])
+	onWindowScroll(event => {
+		setScrollPosition({ x: window.scrollX, y: window.scrollY })
+	})
 
 	return scrollPosition
 }
