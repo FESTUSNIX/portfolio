@@ -1,7 +1,7 @@
 'use client'
 
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { useScrollBlock } from '@/hooks/useScrollBlock'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'

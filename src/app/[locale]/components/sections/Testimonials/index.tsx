@@ -16,12 +16,9 @@ export const TestimonialsSection = async (props: Props) => {
 				<TestimonialsContent testimonials={testimonials} />
 
 				<div className='fixed inset-0 -z-10'>
-					<div
-						className={cn(
-							'pointer-events-none absolute inset-0 -z-20 w-full bg-background bg-dot-white/15'
-						)}></div>
+					<div className={cn('pointer-events-none absolute inset-0 -z-20 w-full bg-background bg-dot-white/25')}></div>
 				</div>
-				<div className='pointer-events-none absolute inset-[-1rem] -z-10 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_-20%,black_60%)]' />
+				<div className='pointer-events-none absolute inset-[-1rem] -z-10 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_-20%,black_80%)]' />
 			</div>
 		</section>
 	)
