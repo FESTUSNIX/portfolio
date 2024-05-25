@@ -1,3 +1,5 @@
+'use client'
+
 import { createClient } from '@/lib/supabase/client'
 import { cn } from '@/lib/utils'
 import { type DOMRectValues } from 'beautiful-react-hooks/useResizeObserver'
@@ -22,8 +24,8 @@ export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation,
 
 		setIsLoading(true)
 
-		const percentX = ((position.x + 16) / (containerDOMRect?.width ?? 0)) * 100
-		const percentY = ((position.y + 16) / (containerDOMRect?.height ?? 0)) * 100
+		const percentX = ((position.x + 32) / (containerDOMRect?.width ?? 0)) * 100
+		const percentY = ((position.y + 32) / (containerDOMRect?.height ?? 0)) * 100
 
 		const { error } = await supabase.from('emoji_board').insert({
 			emoji: selectedEmoji,
@@ -33,6 +35,8 @@ export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation,
 		})
 
 		if (error) console.error('Error inserting emoji:', error)
+
+		localStorage.setItem('hasAddedEmoji', 'true')
 
 		setSelectedEmoji(null)
 		setIsLoading(false)

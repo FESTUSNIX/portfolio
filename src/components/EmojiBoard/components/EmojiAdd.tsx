@@ -3,20 +3,28 @@
 import DraggableWrapper from '@/components/Draggable'
 import RotatableWrapper from '@/components/Rotatable'
 import { cn } from '@/lib/utils'
+import '@/styles/EmojiPickerReact.css'
 import useResizeObserver from 'beautiful-react-hooks/useResizeObserver'
+import EmojiPicker, { EmojiStyle, Theme } from 'emoji-picker-react'
 import { XIcon } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { Suspense, useRef, useState } from 'react'
 import { AddButton } from './AddButton'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 
 type Props = {
 	className?: string
 }
 
 export const EmojiAdd = ({ className }: Props) => {
+	const RECOMMENDED_EMOJIS = ['2764-fe0f', '1f44d', '1f4bb', '1f60e', '1f44c', '1f916']
+
 	const container = useRef<HTMLDivElement>(null)
 	const containerDOMRect = useResizeObserver(container, 200)
 
+	const isMd = useMediaQuery('(min-width: 768px)')
+
 	const emojiElement = useRef<HTMLDivElement>(null)
+	const hasAlreadyAddedEmoji = localStorage.getItem('hasAddedEmoji')
 
 	const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null)
 	const [hasTouchedEmoji, setHasTouchedEmoji] = useState(false)
@@ -33,6 +41,8 @@ export const EmojiAdd = ({ className }: Props) => {
 		setRotation(0)
 	}
 
+	if (hasAlreadyAddedEmoji || !isMd) return null
+
 	return (
 		<>
 			<div className={cn('group absolute left-1/2 top-4 z-30 -translate-x-1/2', className)}>
@@ -44,18 +54,27 @@ export const EmojiAdd = ({ className }: Props) => {
 					setSelectedEmoji={setSelectedEmoji}
 				/>
 
-				<div className='absolute left-1/2 top-0 hidden -translate-x-1/2 -translate-y-full rounded-full pb-2 group-hover:block'>
-					<ul className='flex items-center gap-4 overflow-hidden rounded-full border bg-muted/40 px-4 py-2 text-muted-foreground backdrop-blur-sm duration-300 hover:backdrop-blur-md'>
-						{RECOMMENDED_EMOJIS.map((emoji, i) => (
-							<li key={`emoji-${i}`}>
-								<button
-									onClick={() => setSelectedEmoji(emoji)}
-									className='rounded-full p-1 text-3xl duration-300 hover:scale-125'>
-									{emoji}
-								</button>
-							</li>
-						))}
-					</ul>
+				<div
+					className={cn(
+						'absolute bottom-0 left-1/2 hidden -translate-x-1/2 translate-y-full rounded-full py-2',
+						!selectedEmoji && 'group-hover:block'
+					)}>
+					<Suspense>
+						<EmojiPicker
+							reactionsDefaultOpen={true}
+							onReactionClick={e => setSelectedEmoji(e.emoji)}
+							onEmojiClick={e => setSelectedEmoji(e.emoji)}
+							theme={Theme.DARK}
+							emojiStyle={EmojiStyle.NATIVE}
+							searchDisabled
+							skinTonesDisabled
+							previewConfig={{
+								showPreview: false
+							}}
+							reactions={RECOMMENDED_EMOJIS}
+							className='[&>ul]:gap-3'
+						/>
+					</Suspense>
 				</div>
 			</div>
 
@@ -73,15 +92,19 @@ export const EmojiAdd = ({ className }: Props) => {
 						onPositionChange={setPosition}>
 						<RotatableWrapper onRotationChange={setRotation}>
 							<div
-								className='flex aspect-square size-16 cursor-move items-center justify-center saturate-0 active:cursor-grabbing'
+								className='flex aspect-square size-24 cursor-move items-center justify-center saturate-0 active:cursor-grabbing'
+								style={{ width: (containerDOMRect?.width ?? 0) * 0.1 }}
 								ref={emojiElement}
 								onMouseDown={() => {
+									!hasTouchedEmoji && setHasTouchedEmoji(true)
+								}}
+								onTouchStart={() => {
 									!hasTouchedEmoji && setHasTouchedEmoji(true)
 								}}>
 								<svg
 									className='pointer-events-none select-none duration-300'
 									viewBox='0 0 32 32'
-									style={{ width: !isDragging && hasTouchedEmoji ? (containerDOMRect?.width ?? 0) * 0.03 : '100%' }}>
+									style={{ width: !isDragging && hasTouchedEmoji ? (containerDOMRect?.width ?? 0) * 0.06 : '100%' }}>
 									<text x='50%' y='50%' dominantBaseline='middle' textAnchor='middle'>
 										{selectedEmoji}
 									</text>
@@ -107,5 +130,3 @@ export const EmojiAdd = ({ className }: Props) => {
 		</>
 	)
 }
-
-const RECOMMENDED_EMOJIS = ['👍', '❤️', '👏', '🤔', '😂', '👌']

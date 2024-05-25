@@ -40,10 +40,28 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
 		if (onDragChange) onDragChange(true)
 	}
 
+	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+		setIsDragging(true)
+		const touch = e.touches[0]
+		setStartMousePosition({ x: touch.clientX, y: touch.clientY })
+		setStartPosition(position)
+
+		if (onDragChange) onDragChange(true)
+	}
+
 	const handleMouseMove = (e: MouseEvent) => {
+		handleMove(e.clientX, e.clientY)
+	}
+
+	const handleTouchMove = (e: TouchEvent) => {
+		const touch = e.touches[0]
+		handleMove(touch.clientX, touch.clientY)
+	}
+
+	const handleMove = (clientX: number, clientY: number) => {
 		if (isDragging) {
-			const dx = e.clientX - startMousePosition.x
-			const dy = e.clientY - startMousePosition.y
+			const dx = clientX - startMousePosition.x
+			const dy = clientY - startMousePosition.y
 			const newPosX = startPosition.x + dx
 			const newPosY = startPosition.y + dy
 
@@ -67,18 +85,29 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
 		if (onDragChange) onDragChange(false)
 	}
 
+	const handleTouchEnd = () => {
+		setIsDragging(false)
+		if (onDragChange) onDragChange(false)
+	}
+
 	useEffect(() => {
 		if (isDragging) {
 			window.addEventListener('mousemove', handleMouseMove)
 			window.addEventListener('mouseup', handleMouseUp)
+			window.addEventListener('touchmove', handleTouchMove)
+			window.addEventListener('touchend', handleTouchEnd)
 		} else {
 			window.removeEventListener('mousemove', handleMouseMove)
 			window.removeEventListener('mouseup', handleMouseUp)
+			window.removeEventListener('touchmove', handleTouchMove)
+			window.removeEventListener('touchend', handleTouchEnd)
 		}
 
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove)
 			window.removeEventListener('mouseup', handleMouseUp)
+			window.removeEventListener('touchmove', handleTouchMove)
+			window.removeEventListener('touchend', handleTouchEnd)
 		}
 	}, [isDragging])
 
@@ -87,7 +116,8 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
 			ref={elementRef}
 			className='absolute'
 			style={{ left: `${position.x}px`, top: `${position.y}px` }}
-			onMouseDown={handleMouseDown}>
+			onMouseDown={handleMouseDown}
+			onTouchStart={handleTouchStart}>
 			{children}
 		</div>
 	)

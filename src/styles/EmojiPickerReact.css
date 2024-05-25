@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.EmojiPickerReact.epr-dark-theme {
+	@apply backdrop-blur-sm;
+	--epr-bg-color: theme(colors.muted.DEFAULT / 40%);
+	--epr-category-label-bg-color: theme(colors.background / 80%);
+	--epr-text-color: theme(colors.secondary.foreground);
+	--epr-dark-reactions-bg-color: theme(colors.muted.DEFAULT / 40%);
+	--epr-highlight-color: theme(colors.primary.DEFAULT);
+	--epr-dark-category-icon-active-color: theme(colors.primary.DEFAULT);
+}
+
+.EmojiPickerReact.epr-dark-theme:not(.epr-search-active) .epr_-f1jbax.epr-active {
+	background-position-y: calc(var(--epr-category-navigation-button-size) * 2);
+}
+
+.EmojiPickerReact.epr-dark-theme:not(.epr-search-active) .epr_-f1jbax:hover {
+	background-position-y: calc(var(--epr-category-navigation-button-size) * 2);
+}
+
+.EmojiPickerReact.epr-dark-theme .epr_-4oog2z:hover:after {
+	background-position-y: -40px;
+}

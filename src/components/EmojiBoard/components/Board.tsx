@@ -3,9 +3,10 @@
 import { createClient } from '@/lib/supabase/client'
 import { Auth } from '@supabase/auth-ui-react'
 import { User } from '@supabase/supabase-js'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { useEffect, useState } from 'react'
-import { RealtimeCursors } from './RealtimeCursors'
 import { Emoji } from '..'
+import { RealtimeCursors } from './RealtimeCursors'
 
 type Props = {
 	serverEmojis: Emoji[] | null
@@ -13,6 +14,8 @@ type Props = {
 
 export const Board = ({ serverEmojis }: Props) => {
 	const supabase = createClient()
+
+	const isMd = useMediaQuery('(min-width: 768px)')
 
 	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
 	const [user, setUser] = useState<User>()
@@ -55,7 +58,6 @@ export const Board = ({ serverEmojis }: Props) => {
 					if (!newEmoji) return
 
 					setEmojis(prev => [...(prev ?? []), newEmoji])
-					console.log(newEmoji)
 				}
 			)
 			.subscribe()
@@ -66,6 +68,7 @@ export const Board = ({ serverEmojis }: Props) => {
 	}, [supabase])
 
 	if (!user) return <Auth supabaseClient={supabase} providers={[]} />
+	if (!isMd) return null
 
 	return (
 		<>
@@ -74,7 +77,7 @@ export const Board = ({ serverEmojis }: Props) => {
 				{emojis?.map(emoji => (
 					<svg
 						key={emoji.id}
-						className='pointer-events-none absolute aspect-square h-auto w-[2.5%] select-none text-xl'
+						className='pointer-events-none absolute aspect-square h-auto w-[5%] select-none text-xl'
 						style={{
 							top: `${emoji.y}%`,
 							left: `${emoji.x}%`,

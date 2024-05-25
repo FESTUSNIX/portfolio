@@ -18,7 +18,7 @@ export const EmojiBoard = async (props: Props) => {
 	const { data: emojis } = await supabase.from('emoji_board').select('id, emoji, x, y, rotation')
 
 	return (
-		<div className='relative z-10 aspect-[2/1] h-auto w-full border-y'>
+		<div className='relative z-10 hidden aspect-[2/1] h-auto w-full border-y border-border md:block'>
 			<EmojiAdd />
 			<Board serverEmojis={emojis ?? []} />
 
