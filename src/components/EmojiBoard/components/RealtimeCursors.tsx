@@ -31,7 +31,7 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 
 	const createUserMouseCursor = async (_userId: string) => {
 		// Check if the cursor for this user has already been created
-		if (createdCursorsRef.current.includes(_userId) || _userId === userId) return
+		if (createdCursorsRef.current.includes(_userId)) return
 
 		// Check if the cursor div for this user already exists
 		const existingCursorDiv = document.getElementById(_userId + '-cursor')
@@ -57,7 +57,6 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 			'-translate-x-1/2',
 			'-translate-y-1/2',
 			'duration-300',
-			'ease-in-out',
 			'pointer-events-none'
 		)
 
@@ -160,10 +159,7 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 
 	return (
 		<div className='relative z-50 h-full w-full'>
-			<div
-				id='container'
-				ref={containerRef}
-				className='h-full w-full cursor-[url("/assets/custom-cursor.svg"),auto]'></div>
+			<div id='container' ref={containerRef} className='relative h-full w-full cursor-none'></div>
 		</div>
 	)
 }

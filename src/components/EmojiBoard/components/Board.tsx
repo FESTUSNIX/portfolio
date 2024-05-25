@@ -4,9 +4,10 @@ import { createClient } from '@/lib/supabase/client'
 import { Auth } from '@supabase/auth-ui-react'
 import { User } from '@supabase/supabase-js'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Emoji } from '..'
 import { RealtimeCursors } from './RealtimeCursors'
+import { CustomCursor } from './CustomCursor'
 
 type Props = {
 	serverEmojis: Emoji[] | null
@@ -19,6 +20,8 @@ export const Board = ({ serverEmojis }: Props) => {
 
 	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
 	const [user, setUser] = useState<User>()
+
+	const containerRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		const init = async () => {
@@ -72,7 +75,9 @@ export const Board = ({ serverEmojis }: Props) => {
 
 	return (
 		<>
-			<div className='overflow-hiddens relative h-full w-full [clip-path:inset(0)]'>
+			<div
+				ref={containerRef}
+				className='group/container relative h-full w-full cursor-none overflow-hidden [clip-path:inset(0)]'>
 				<div className='fixed inset-0 -z-20 bg-dot-white/15'></div>
 				{emojis?.map(emoji => (
 					<svg
@@ -91,6 +96,7 @@ export const Board = ({ serverEmojis }: Props) => {
 				))}
 
 				<RealtimeCursors client={supabase} userId={user.id} />
+				<CustomCursor containerRef={containerRef} />
 			</div>
 		</>
 	)
