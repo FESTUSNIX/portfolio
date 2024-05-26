@@ -1,13 +1,12 @@
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
-import { Auth } from '@supabase/auth-ui-react'
 import { User } from '@supabase/supabase-js'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { useEffect, useRef, useState } from 'react'
 import { Emoji } from '..'
-import { RealtimeCursors } from './RealtimeCursors'
 import { CustomCursor } from './CustomCursor'
+import { RealtimeCursors } from './RealtimeCursors'
 
 type Props = {
 	serverEmojis: Emoji[] | null
@@ -17,26 +16,32 @@ export const Board = ({ serverEmojis }: Props) => {
 	const supabase = createClient()
 
 	const isMd = useMediaQuery('(min-width: 768px)')
-
-	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
-	const [user, setUser] = useState<User>()
-
 	const containerRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const init = async () => {
-			const {
-				data: { user }
-			} = await supabase.auth.getUser()
-			if (user) {
-				setUser(user)
-			}
+	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
+	const [user, setUser] = useState<User | null>(null)
+
+	const handleAnonSignIn = async () => {
+		if (user) return
+
+		const {
+			data: { user: currentUser }
+		} = await supabase.auth.getUser()
+
+		if (currentUser) {
+			return setUser(currentUser)
 		}
-		init()
-		// Listen for login events and set user
-		supabase.auth.onAuthStateChange((event, session) => {
-			setUser(session?.user)
-		})
+
+		const {
+			data: { user: newUser }
+		} = await supabase.auth.signInAnonymously()
+
+		if (newUser) setUser(newUser)
+	}
+
+	useEffect(() => {
+		handleAnonSignIn()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
@@ -70,7 +75,6 @@ export const Board = ({ serverEmojis }: Props) => {
 		}
 	}, [supabase])
 
-	if (!user) return <Auth supabaseClient={supabase} providers={[]} />
 	if (!isMd) return null
 
 	return (
@@ -95,7 +99,7 @@ export const Board = ({ serverEmojis }: Props) => {
 					</svg>
 				))}
 
-				<RealtimeCursors client={supabase} userId={user.id} />
+				{user && <RealtimeCursors client={supabase} userId={user.id} />}
 				<CustomCursor containerRef={containerRef} />
 			</div>
 		</>

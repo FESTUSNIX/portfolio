@@ -130,6 +130,7 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 		return () => {
 			containerElement?.removeEventListener('mousemove', () => {})
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isAuthenticated, channel, session?.user?.id])
 
 	useEffect(() => {
@@ -138,7 +139,7 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 			channel
 				.on('broadcast', { event: MOUSE_EVENT }, payload => {
 					receivedCursorPosition(payload)
-				})
+	 			})
 				.subscribe()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -155,6 +156,7 @@ export const RealtimeCursors = ({ client, userId }: Props) => {
 				setIsAuthenticated(false)
 			}
 		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [session?.user?.id])
 
 	return (

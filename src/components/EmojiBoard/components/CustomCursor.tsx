@@ -36,7 +36,7 @@ export const CustomCursor = ({ containerRef }: Props) => {
 	return (
 		<div
 			ref={cursorRef}
-			className='absolute left-0 top-0 z-[10000] size-5 text-foreground opacity-0 mix-blend-difference transition-opacity duration-300 group-hover/container:opacity-100'>
+			className='pointer-events-none absolute left-0 top-0 z-[10000] size-5 text-foreground opacity-0 mix-blend-difference transition-opacity duration-300 group-hover/container:opacity-100'>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				width='20'

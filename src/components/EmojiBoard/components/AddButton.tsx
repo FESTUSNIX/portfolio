@@ -34,9 +34,11 @@ export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation,
 			rotation: rotation
 		})
 
-		if (error) console.error('Error inserting emoji:', error)
-
-		localStorage.setItem('hasAddedEmoji', 'true')
+		if (error) {
+			console.error('Error inserting emoji:', error)
+		} else {
+			localStorage.setItem('hasAddedEmoji', 'true')
+		}
 
 		setSelectedEmoji(null)
 		setIsLoading(false)
