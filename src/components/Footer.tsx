@@ -12,7 +12,7 @@ export const Footer = (props: Props) => {
 				<p className='uppercase'>© Mateusz Hada {year}</p>
 
 				<ul className='flex flex-wrap-reverse items-center gap-x-4'>
-					{SOCIAL_MEDIA_LINKS.map(link => (
+					{Object.values(SOCIAL_MEDIA_LINKS).map(link => (
 						<li key={link.href}>
 							<Link href={link.href} target='_blank' rel='noopener' className='uppercase'>
 								{link.name}

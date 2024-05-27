@@ -1,0 +1,139 @@
+'use client'
+
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
+import { cn } from '@/lib/utils'
+import { ContactEmailPayload, ContactEmailValidator } from '@/lib/validators/contactForm'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
+import TextareaAutosize from 'react-textarea-autosize'
+import { toast } from 'sonner'
+
+type Props = {}
+
+export const ContactForm = ({}: Props) => {
+	const form = useForm<ContactEmailPayload>({
+		resolver: zodResolver(ContactEmailValidator),
+		defaultValues: {
+			name: '',
+			email: '',
+			message: ''
+		}
+	})
+
+	const { mutate: sendEmail, isPending } = useMutation({
+		mutationFn: async (values: ContactEmailPayload) => {
+			const payload: ContactEmailPayload = {
+				name: values.name,
+				email: values.email,
+				message: values.message
+			}
+
+			const res = await fetch('/api/contactForm', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			})
+
+			if (!res.ok) throw new Error('Could not send email')
+
+			return 'OK'
+		},
+		onError: err => {
+			return toast.error('There was an error sending the email')
+		},
+		onSuccess: data => {
+			toast.success('Email sent!')
+			form.reset()
+		}
+	})
+
+	const formTextStyles = 'text-5xl uppercase leading-none'
+	const inputAnimateBorder =
+		'relative h-full has-[>:focus-visible]:before:animate-[ScaleXToRight_0.3s_forwards] before:absolute before:bottom-0 before:z-10 before:w-full before:animate-[ScaleXToLeft_0.3s_forwards] before:origin-right before:duration-300 before:h-px before:bg-foreground'
+	const inputStyles =
+		'relative h-full w-full text-2xl border-b bg-transparent py-2 outline-none placeholder:text-2xl placeholder:leading-tight placeholder:text-muted-foreground focus-visible:outline-none'
+
+	return (
+		<div className=''>
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(e => sendEmail(e))}>
+					<div className='flex flex-wrap items-center gap-x-8 gap-y-8'>
+						<p className={formTextStyles}>Hello, my name is</p>
+
+						<FormField
+							control={form.control}
+							name='name'
+							render={({ field }) => (
+								<FormItem className='h-12 grow'>
+									<FormControl>
+										<div className={inputAnimateBorder}>
+											<input {...field} placeholder='YOUR NAME' className={inputStyles} />
+										</div>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<p className={formTextStyles}>and you can reach me on</p>
+
+						<FormField
+							control={form.control}
+							name='email'
+							render={({ field }) => (
+								<FormItem className='h-12 grow'>
+									<FormControl>
+										<div className={inputAnimateBorder}>
+											<input {...field} placeholder='YOUR EMAIL ADDRESS' className={inputStyles} />
+										</div>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<div className='flex grow items-start gap-8'>
+							<p className={formTextStyles}>i&apos;m looking for</p>
+
+							<FormField
+								control={form.control}
+								name='message'
+								render={({ field }) => (
+									<FormItem className='h-auto grow'>
+										<FormControl>
+											<div className={inputAnimateBorder}>
+												<TextareaAutosize
+													{...field}
+													placeholder='SERVICE / YOUR MESSAGE'
+													className={cn(inputStyles, 'resize-none')}
+													minRows={2}
+													maxRows={5}
+												/>
+											</div>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+						</div>
+					</div>
+
+					<Button
+						className='ml-auto mt-16 block px-16 py-6 text-3xl'
+						disabled={isPending}
+						type='submit'
+						onClick={() => {
+							form.handleSubmit(e => sendEmail(e))()
+						}}>
+						<span>{isPending ? 'Sending it' : 'Send it'}</span>
+						{isPending && <span className='ml-4'>🚀</span>}
+					</Button>
+				</form>
+			</Form>
+		</div>
+	)
+}

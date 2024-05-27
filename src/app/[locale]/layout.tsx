@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Providers from '@/components/Providers'
+import { Toaster } from '@/components/ui/sonner'
 import { Locales, i18nConfig } from '@/i18nConfig'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
@@ -60,6 +61,8 @@ export default function RootLayout({
 					{children}
 					<Footer />
 				</Providers>
+
+				<Toaster />
 				<Analytics />
 			</body>
 		</html>

@@ -29,7 +29,6 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 
 			<ContactCTASection />
 
-			{/* Emoji board */}
 			<EmojiBoard />
 		</main>
 	)
