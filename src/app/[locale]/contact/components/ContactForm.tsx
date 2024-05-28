@@ -51,14 +51,14 @@ export const ContactForm = ({}: Props) => {
 		}
 	})
 
-	const formTextStyles = 'text-5xl uppercase leading-none'
+	const formTextStyles = 'text-3xl lg:text-5xl uppercase leading-none sm:text-4xl'
 	const inputAnimateBorder =
 		'relative h-full has-[>:focus-visible]:before:animate-[ScaleXToRight_0.3s_forwards] before:absolute before:bottom-0 before:z-10 before:w-full before:animate-[ScaleXToLeft_0.3s_forwards] before:origin-right before:duration-300 before:h-px before:bg-foreground'
 	const inputStyles =
 		'relative h-full w-full text-2xl border-b bg-transparent py-2 outline-none placeholder:text-2xl placeholder:leading-tight placeholder:text-muted-foreground focus-visible:outline-none'
 
 	return (
-		<div className=''>
+		<div>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(e => sendEmail(e))}>
 					<div className='flex flex-wrap items-center gap-x-8 gap-y-8'>
@@ -96,7 +96,7 @@ export const ContactForm = ({}: Props) => {
 							)}
 						/>
 
-						<div className='flex grow items-start gap-8'>
+						<div className='flex grow flex-wrap items-start gap-8'>
 							<p className={formTextStyles}>i&apos;m looking for</p>
 
 							<FormField
@@ -109,7 +109,7 @@ export const ContactForm = ({}: Props) => {
 												<TextareaAutosize
 													{...field}
 													placeholder='SERVICE / YOUR MESSAGE'
-													className={cn(inputStyles, 'resize-none')}
+													className={cn(inputStyles, 'min-w-72 shrink-0 resize-none')}
 													minRows={2}
 													maxRows={5}
 												/>
@@ -123,7 +123,7 @@ export const ContactForm = ({}: Props) => {
 					</div>
 
 					<Button
-						className='ml-auto mt-16 block px-16 py-6 text-3xl'
+						className='ml-auto mt-12 block px-16 py-6 text-2xl md:text-3xl lg:mt-16'
 						disabled={isPending}
 						type='submit'
 						onClick={() => {
