@@ -7,7 +7,7 @@ type Props = {}
 
 export const ProjectsSection = (props: Props) => {
 	return (
-		<section className='mt-32 md:mt-36 xl:mt-48'>
+		<section id='projects' className='mt-32 scroll-m-20 md:mt-36 xl:mt-48'>
 			<TypographyH2 className='mb-12 text-right'>
 				<span className='block'>My latest </span>
 				<span className='flex items-center gap-4 sm:gap-8 lg:gap-12'>

@@ -1,7 +1,7 @@
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
-import { cn } from '@/lib/utils'
+import { cn, setLocalStorage } from '@/lib/utils'
 import { type DOMRectValues } from 'beautiful-react-hooks/useResizeObserver'
 import { CheckIcon, Loader2, SmilePlusIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -37,7 +37,7 @@ export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation,
 		if (error) {
 			console.error('Error inserting emoji:', error)
 		} else {
-			localStorage.setItem('hasAddedEmoji', 'true')
+			setLocalStorage('hasAlreadyAddedEmoji', true)
 		}
 
 		setSelectedEmoji(null)

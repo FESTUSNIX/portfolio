@@ -65,7 +65,7 @@ export const HeroSection = ({ dict }: Props) => {
 						/>
 					</div>
 
-					<h2 className='mt-12 text-right text-2xl uppercase leading-none sm:text-3xl md:mt-8 md:text-4xl lg:mt-0 xl:text-5xl'>
+					<h2 className='mt-12 text-right text-2xl uppercase leading-none mix-blend-difference sm:text-3xl md:mt-8 md:text-4xl lg:mt-0 xl:text-5xl'>
 						<span className='block'>Freelance</span>
 						<span className='block'>Developer & Designer</span>
 					</h2>

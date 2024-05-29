@@ -10,7 +10,7 @@ export const TestimonialsSection = async (props: Props) => {
 
 	return (
 		<section className='mt-32 md:mt-36 xl:mt-48'>
-			<TypographyH2 className='text-center'>See what people have to say</TypographyH2>
+			<TypographyH2 className='text-center mb-8'>See what people have to say</TypographyH2>
 
 			<div className='relative py-24 [clip-path:inset(-1rem)]'>
 				<TestimonialsContent testimonials={testimonials} />
