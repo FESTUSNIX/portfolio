@@ -37,6 +37,7 @@
 		"nodemailer": "^6.9.13",
 		"react": "latest",
 		"react-dom": "latest",
+		"react-focus-lock": "^2.12.1",
 		"react-hook-form": "^7.51.5",
 		"react-textarea-autosize": "^8.5.3",
 		"sonner": "^1.4.41",

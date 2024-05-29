@@ -137,8 +137,8 @@
 }
 
 @layer utilities {
-	.text-stroke {
-		color: transparent;
+	.text-stroke-foreground {
+		text-stroke: 1px theme(colors.foreground);
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: theme(colors.foreground);
 	}

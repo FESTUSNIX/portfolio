@@ -25,7 +25,7 @@ const Navbar = () => {
 					<div className='flex items-center gap-1.5'>
 						<div className='animate-blob-pulse size-2.5 rounded-full bg-[#3ADC71]' />
 						<p className='text-sm uppercase'>
-							available <span className='font-bold'>may 2024</span>
+							available <span className='font-bold'>june 2024</span>
 						</p>
 					</div>
 				</div>

@@ -1,13 +1,17 @@
 'use client'
 
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
-import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
+import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
+import { contactInfo } from '@/constants/contactInfo'
 import { useScrollBlock } from '@/hooks/useScrollBlock'
 import { cn } from '@/lib/utils'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname, useSelectedLayoutSegment } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import FocusLock from 'react-focus-lock'
 import { HamburgerIcon } from './HamburgerIcon'
 
 const variants = {
@@ -51,43 +55,80 @@ export const MobileNavMenu = () => {
 
 	return (
 		<>
-			<div className={'z-50 text-foreground md:hidden'}>
-				<HamburgerIcon toggle={() => handleChange(!isOpen, 'inProgress')} toggled={isOpen} />
-			</div>
-
-			<motion.div
-				className={cn(
-					'fixed inset-0 z-40 flex items-center justify-center bg-secondary/75 text-foreground backdrop-blur-lg md:hidden',
-					animationState === 'open' && 'visible',
-					animationState === 'closed' && 'invisible hidden',
-					!isOpen && 'hidden'
-				)}
-				initial={'closed'}
-				animate={isOpen ? 'open' : 'closed'}
-				onAnimationComplete={definition => {
-					handleChange(definition === 'open', definition as 'closed' | 'open' | 'inProgress')
-				}}
-				variants={variants}
-				transition={{ ease: 'easeInOut', duration: 0.3 }}>
-				<div className='grid-container h-full p-8'>
-					<div className='flex flex-col items-center justify-center'>
-						<ul className='flex w-full flex-col items-center justify-center gap-8 text-center sm:items-start'>
-							{NAV_LINKS.map(link => (
-								<Link
-									key={link.href}
-									href={link.href}
-									className={cn(
-										'font-heading text-5xl uppercase duration-300 hover:underline active:scale-90 active:underline sm:text-6xl',
-										`/${activeSegment ?? ''}` === link.href && 'text-primary'
-									)}
-									onClick={() => handleChange(false, 'inProgress')}>
-									<span>{link.label}</span>
-								</Link>
-							))}
-						</ul>
-					</div>
+			<FocusLock disabled={!isOpen || isDesktop} group='navbar'>
+				<div className={'z-50 text-foreground md:hidden'}>
+					<HamburgerIcon toggle={() => handleChange(!isOpen, 'inProgress')} toggled={isOpen} />
 				</div>
-			</motion.div>
+			</FocusLock>
+
+			{createPortal(
+				<motion.div
+					className={cn(
+						'fixed inset-0 z-40 flex h-screen items-center justify-center bg-background/40 text-foreground mix-blend-difference backdrop-blur-3xl backdrop-sepia-[20%] md:hidden',
+						animationState === 'open' && 'visible',
+						animationState === 'closed' && 'invisible hidden',
+						!isOpen && 'hidden'
+					)}
+					initial={'closed'}
+					animate={isOpen ? 'open' : 'closed'}
+					onAnimationComplete={definition => {
+						handleChange(definition === 'open', definition as 'closed' | 'open' | 'inProgress')
+					}}
+					variants={variants}
+					transition={{ ease: 'easeInOut', duration: 0.3 }}>
+					<FocusLock disabled={!isOpen || isDesktop} group='navbar' className='h-full pt-20'>
+						<div className='grid-container h-full'>
+							<div className='flex w-full max-w-sm flex-col justify-between gap-y-12 justify-self-center'>
+								<div className='space-y-2 pt-4'>
+									<Link
+										href={`mailto:${contactInfo.email}`}
+										className='flex items-center gap-4 text-lg uppercase hover:underline'>
+										<span className='shrink-0'>{contactInfo.email}</span>
+										<div className='h-px w-full bg-foreground' />
+									</Link>
+
+									<div className='flex items-center gap-4'>
+										<div className='h-px w-full bg-foreground' />
+										<div className='flex shrink-0 items-center gap-2'>
+											<div className='animate-blob-pulse size-3 rounded-full bg-[#3ADC71]' />
+											<p className='text-lg uppercase'>
+												available <span className='font-bold'>june 2024</span>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<ul className='-mt-16 flex w-full flex-col gap-8'>
+									{NAV_LINKS.map(link => (
+										<Link
+											key={link.href}
+											href={link.href}
+											className={cn(
+												'text-stroke-foreground flex items-center gap-4 text-5xl uppercase duration-300 even:flex-row-reverse even:text-end hover:underline sm:text-6xl',
+												`/${activeSegment ?? ''}` === link.href && 'underline'
+											)}
+											onClick={() => handleChange(false, 'inProgress')}>
+											<div className='h-px w-full bg-foreground' />
+											<span className='shrink-0'>{link.label}</span>
+										</Link>
+									))}
+								</ul>
+
+								<ul className='flex flex-wrap-reverse items-center justify-center gap-x-4 pb-8'>
+									{Object.values(SOCIAL_MEDIA_LINKS).map(link => (
+										<li key={link.href}>
+											<Link href={link.href} target='_blank' rel='noopener' className='uppercase hover:underline'>
+												{link.name}
+											</Link>
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</FocusLock>
+				</motion.div>,
+				document?.body
+			)}
 		</>
 	)
 }
