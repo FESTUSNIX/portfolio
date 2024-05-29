@@ -2,8 +2,9 @@
 
 import DraggableWrapper from '@/components/Draggable'
 import RotatableWrapper from '@/components/Rotatable'
-import { cn, getLocalStorage } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import '@/styles/EmojiPickerReact.css'
+import useLocalStorage from 'beautiful-react-hooks/useLocalStorage'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import useResizeObserver from 'beautiful-react-hooks/useResizeObserver'
 import EmojiPicker, { EmojiStyle, Theme } from 'emoji-picker-react'
@@ -24,7 +25,7 @@ export const EmojiAdd = ({ className }: Props) => {
 	const isMd = useMediaQuery('(min-width: 768px)')
 
 	const emojiElement = useRef<HTMLDivElement>(null)
-	const hasAlreadyAddedEmoji = getLocalStorage('hasAlreadyAddedEmoji', false)
+	const [hasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
 
 	const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null)
 	const [hasTouchedEmoji, setHasTouchedEmoji] = useState(false)

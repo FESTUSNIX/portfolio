@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import FocusLock from 'react-focus-lock'
 import { HamburgerIcon } from './HamburgerIcon'
+import { Portal } from '@/components/Portal'
 
 const variants = {
 	open: { x: 0 },
@@ -60,8 +61,7 @@ export const MobileNavMenu = () => {
 					<HamburgerIcon toggle={() => handleChange(!isOpen, 'inProgress')} toggled={isOpen} />
 				</div>
 			</FocusLock>
-
-			{createPortal(
+			<Portal>
 				<motion.div
 					className={cn(
 						'fixed inset-0 z-40 flex h-screen items-center justify-center bg-background/40 text-foreground mix-blend-difference backdrop-blur-3xl backdrop-sepia-[20%] md:hidden',
@@ -126,9 +126,8 @@ export const MobileNavMenu = () => {
 							</div>
 						</div>
 					</FocusLock>
-				</motion.div>,
-				document?.body
-			)}
+				</motion.div>
+			</Portal>
 		</>
 	)
 }
