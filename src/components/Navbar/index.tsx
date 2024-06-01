@@ -5,6 +5,7 @@ import { contactInfo } from '@/constants/contactInfo'
 import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { Magnetic } from '../Magnetic'
 import { MobileNavMenu } from './components/MobileNavMenu'
 
 const Navbar = () => {
@@ -18,8 +19,10 @@ const Navbar = () => {
 			)}>
 			<nav className='relative flex items-center justify-between mix-blend-difference'>
 				<div className='hidden items-center gap-6 lg:flex'>
-					<Link href={`mailto:${contactInfo.email}`} className='text-sm uppercase hover:underline'>
-						{contactInfo.email}
+					<Link href={`mailto:${contactInfo.email}`} className='py-0.5 text-sm uppercase hover:underline'>
+						<Magnetic as='p' strength={{ x: 0.1, y: 0.3 }}>
+							{contactInfo.email}
+						</Magnetic>
 					</Link>
 
 					<div className='flex items-center gap-1.5'>
@@ -32,8 +35,10 @@ const Navbar = () => {
 
 				<Link
 					href={'/'}
-					className='z-50 mt-1 w-max font-heading text-2xl leading-none lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
-					HADA
+					className='group z-50 w-max pt-1 font-heading text-2xl leading-none lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
+					<Magnetic strength={{ x: 0.15 }} className='group-hover:rainbow-background'>
+						HADA
+					</Magnetic>
 				</Link>
 
 				<MobileNavMenu />
@@ -43,8 +48,10 @@ const Navbar = () => {
 						<li key={link.href} className='group'>
 							<Link
 								href={link.href}
-								className='border-foreground py-0.5 text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border group-last:px-3 group-last:py-1'>
-								{link.label}
+								className='border-foreground text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border'>
+								<Magnetic strength={{ x: 0.1, y: 0.3 }} className='py-0.5 group-last:px-3 group-last:py-1'>
+									{link.label}
+								</Magnetic>
 							</Link>
 						</li>
 					))}

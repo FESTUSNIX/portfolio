@@ -1,6 +1,6 @@
 'use client'
 
-import { Magnetic } from '@/components/Magnetic'
+import { AvatarMagnetic } from '@/app/[locale]/components/sections/Testimonials/components/AvatarMagnetic'
 import { Testimonial } from '@/constants/TESTIMONIALS'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -60,7 +60,7 @@ type AvatarProps = {
 
 const Avatar = ({ image, name, onClick, className, isActive }: AvatarProps) => {
 	return (
-		<Magnetic
+		<AvatarMagnetic
 			className={cn(
 				'size-14 rounded-full duration-300 group-hover:m-1 sm:size-16 md:size-[4.5rem] lg:size-20 xl:size-24',
 				className
@@ -77,6 +77,6 @@ const Avatar = ({ image, name, onClick, className, isActive }: AvatarProps) => {
 				/>
 				<span className='sr-only'>{name}</span>
 			</button>
-		</Magnetic>
+		</AvatarMagnetic>
 	)
 }

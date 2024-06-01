@@ -1,5 +1,6 @@
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
 import Link from 'next/link'
+import { Magnetic } from './Magnetic'
 
 type Props = {}
 
@@ -14,9 +15,11 @@ export const Footer = (props: Props) => {
 				<ul className='flex flex-wrap-reverse items-center gap-x-4'>
 					{Object.values(SOCIAL_MEDIA_LINKS).map(link => (
 						<li key={link.href}>
-							<Link href={link.href} target='_blank' rel='noopener' className='uppercase'>
-								{link.name}
-							</Link>
+							<Magnetic>
+								<Link href={link.href} target='_blank' rel='noopener' className='py-1 uppercase hover:underline'>
+									{link.name}
+								</Link>
+							</Magnetic>
 						</li>
 					))}
 				</ul>

@@ -1,5 +1,6 @@
 'use client'
 
+import { Magnetic } from '@/components/Magnetic'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { cn } from '@/lib/utils'
@@ -55,7 +56,7 @@ export const ContactForm = ({}: Props) => {
 	const inputAnimateBorder =
 		'relative h-full has-[>:focus-visible]:before:animate-[ScaleXToRight_0.3s_forwards] before:absolute before:bottom-0 before:z-10 before:w-full before:animate-[ScaleXToLeft_0.3s_forwards] before:origin-right before:duration-300 before:h-px before:bg-foreground'
 	const inputStyles =
-		'relative h-full w-full text-2xl border-b bg-transparent py-2 outline-none placeholder:text-2xl placeholder:leading-tight placeholder:text-muted-foreground focus-visible:outline-none'
+		'relative h-full w-full text-2xl border-b border-border bg-transparent py-2 outline-none placeholder:text-2xl placeholder:leading-tight placeholder:text-muted-foreground focus-visible:outline-none'
 
 	return (
 		<div>
@@ -70,7 +71,8 @@ export const ContactForm = ({}: Props) => {
 							render={({ field }) => (
 								<FormItem className='h-12 grow'>
 									<FormControl>
-										<div className={inputAnimateBorder}>
+										<div
+											className={cn(inputAnimateBorder, field.value && 'before:animate-[ScaleXToRight_0.3s_forwards]')}>
 											<input {...field} placeholder='YOUR NAME' className={inputStyles} />
 										</div>
 									</FormControl>
@@ -87,7 +89,8 @@ export const ContactForm = ({}: Props) => {
 							render={({ field }) => (
 								<FormItem className='h-12 grow'>
 									<FormControl>
-										<div className={inputAnimateBorder}>
+										<div
+											className={cn(inputAnimateBorder, field.value && 'before:animate-[ScaleXToRight_0.3s_forwards]')}>
 											<input {...field} placeholder='YOUR EMAIL ADDRESS' className={inputStyles} />
 										</div>
 									</FormControl>
@@ -105,7 +108,12 @@ export const ContactForm = ({}: Props) => {
 								render={({ field }) => (
 									<FormItem className='h-auto grow'>
 										<FormControl>
-											<div className={inputAnimateBorder}>
+											<div
+												className={cn(
+													inputAnimateBorder,
+													'before:bottom-1',
+													field.value && 'before:animate-[ScaleXToRight_0.3s_forwards]'
+												)}>
 												<TextareaAutosize
 													{...field}
 													placeholder='SERVICE / YOUR MESSAGE'
@@ -123,14 +131,18 @@ export const ContactForm = ({}: Props) => {
 					</div>
 
 					<Button
-						className='ml-auto mt-12 block px-16 py-6 text-2xl md:text-3xl lg:mt-16'
+						className='ml-auto mt-12 block p-0 text-2xl md:text-3xl lg:mt-16'
 						disabled={isPending}
 						type='submit'
 						onClick={() => {
 							form.handleSubmit(e => sendEmail(e))()
 						}}>
-						<span>{isPending ? 'Sending it' : 'Send it'}</span>
-						{isPending && <span className='ml-4'>🚀</span>}
+						<Magnetic className='px-16 py-6 hover:underline'>
+							<>
+								<span>{isPending ? 'Sending it' : 'Send it'}</span>
+								{isPending && <span className='ml-4'>🚀</span>}
+							</>
+						</Magnetic>
 					</Button>
 				</form>
 			</Form>

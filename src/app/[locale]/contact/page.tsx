@@ -1,4 +1,5 @@
 import { GridBackground } from '@/components/GridBackground'
+import { Magnetic } from '@/components/Magnetic'
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
 import { contactInfo } from '@/constants/contactInfo'
 import { ArrowDownLeftIcon } from 'lucide-react'
@@ -40,8 +41,13 @@ const ContactPage = (props: Props) => {
 				</div>
 				<Link
 					href={`mailto:${contactInfo.email}`}
-					className='w-full rounded-full border border-foreground px-4 py-6 text-center text-2xl uppercase leading-none hover:underline sm:text-3xl md:text-4xl lg:px-16 lg:py-8 lg:text-5xl xl:text-6xl'>
-					{contactInfo.email}
+					className='w-full overflow-hidden rounded-full border border-foreground text-center'>
+					<Magnetic
+						as='span'
+						strength={{ x: 0.05 }}
+						className='block overflow-hidden rounded-full px-4 py-6 text-2xl uppercase leading-none hover:underline sm:text-3xl md:text-4xl lg:px-16 lg:py-8 lg:text-5xl xl:text-6xl'>
+						{contactInfo.email}
+					</Magnetic>
 				</Link>
 				<div className='flex items-center justify-end gap-2 lg:gap-4'>
 					<div className='mr-8 hidden h-px w-full grow bg-border sm:block' />
@@ -63,8 +69,13 @@ const SocialMediaPill = ({ href, label }: { href: string; label: string }) => {
 			href={href}
 			target='_blank'
 			rel='noopener'
-			className='shrink-0 rounded-full border border-border px-6 py-4 uppercase leading-none text-muted-foreground duration-300 hover:border-foreground hover:text-foreground sm:px-8 sm:text-lg md:text-xl lg:text-2xl xl:px-10 xl:py-6 xl:text-3xl'>
-			{label}
+			className='shrink-0 rounded-full border border-border text-muted-foreground duration-300 hover:border-foreground hover:text-foreground hover:underline'>
+			<Magnetic
+				as='span'
+				strength={{ x: 0.1 }}
+				className='block px-6 py-4 uppercase leading-none sm:px-8 sm:text-lg md:text-xl lg:text-2xl xl:px-10 xl:py-6 xl:text-3xl'>
+				{label}
+			</Magnetic>
 		</Link>
 	)
 }

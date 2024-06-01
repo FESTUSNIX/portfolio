@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client'
 import { User } from '@supabase/supabase-js'
+import useDidMount from 'beautiful-react-hooks/useDidMount'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { useEffect, useRef, useState } from 'react'
 import { Emoji } from '..'
@@ -18,6 +19,7 @@ export const Board = ({ serverEmojis }: Props) => {
 	const isMd = useMediaQuery('(min-width: 768px)')
 	const containerRef = useRef<HTMLDivElement>(null)
 
+	const [hasMounted, setHasMounted] = useState(false)
 	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
 	const [user, setUser] = useState<User | null>(null)
 
@@ -75,14 +77,18 @@ export const Board = ({ serverEmojis }: Props) => {
 		}
 	}, [supabase])
 
-	if (!isMd) return null
+	useDidMount(() => {
+		setHasMounted(true)
+	})
+
+	if (hasMounted && !isMd) return null
 
 	return (
 		<>
 			<div
 				ref={containerRef}
 				className='group/container relative h-full w-full cursor-none overflow-hidden [clip-path:inset(0)]'>
-				<div className='fixed inset-0 -z-20 bg-dot-white/15'></div>
+				<div className='fixed inset-0 -z-20 bg-dot-white/15' />
 				{emojis?.map(emoji => (
 					<svg
 						key={emoji.id}

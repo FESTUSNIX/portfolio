@@ -4,6 +4,7 @@ import DraggableWrapper from '@/components/Draggable'
 import RotatableWrapper from '@/components/Rotatable'
 import { cn } from '@/lib/utils'
 import '@/styles/EmojiPickerReact.css'
+import useDidMount from 'beautiful-react-hooks/useDidMount'
 import useLocalStorage from 'beautiful-react-hooks/useLocalStorage'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import useResizeObserver from 'beautiful-react-hooks/useResizeObserver'
@@ -23,6 +24,7 @@ export const EmojiAdd = ({ className }: Props) => {
 	const containerDOMRect = useResizeObserver(container, 200)
 
 	const isMd = useMediaQuery('(min-width: 768px)')
+	const [hasMounted, setHasMounted] = useState(false)
 
 	const emojiElement = useRef<HTMLDivElement>(null)
 	const [hasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
@@ -42,18 +44,24 @@ export const EmojiAdd = ({ className }: Props) => {
 		setRotation(0)
 	}
 
-	if (hasAlreadyAddedEmoji || !isMd) return null
+	useDidMount(() => {
+		setHasMounted(true)
+	})
+
+	if (hasMounted && (hasAlreadyAddedEmoji || !isMd)) return null
 
 	return (
 		<>
 			<div className={cn('group absolute left-1/2 top-4 z-30 -translate-x-1/2', className)}>
-				<AddButton
-					selectedEmoji={selectedEmoji}
-					position={position}
-					rotation={rotation}
-					containerDOMRect={containerDOMRect}
-					setSelectedEmoji={setSelectedEmoji}
-				/>
+				<Suspense>
+					<AddButton
+						selectedEmoji={selectedEmoji}
+						position={position}
+						rotation={rotation}
+						containerDOMRect={containerDOMRect}
+						setSelectedEmoji={setSelectedEmoji}
+					/>
+				</Suspense>
 
 				<div
 					className={cn(

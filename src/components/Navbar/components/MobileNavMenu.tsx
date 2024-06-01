@@ -99,7 +99,7 @@ export const MobileNavMenu = () => {
 								</div>
 
 								<ul className='-mt-16 flex w-full flex-col gap-8'>
-									{NAV_LINKS.map(link => (
+									{[{ label: 'Homepage', href: '/' }, ...NAV_LINKS].map(link => (
 										<Link
 											key={link.href}
 											href={link.href}

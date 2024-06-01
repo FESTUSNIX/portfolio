@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { Board } from './components/Board'
 import { EmojiAdd } from './components/EmojiAdd'
+import { Suspense } from 'react'
 
 type Props = {}
 
@@ -19,8 +20,10 @@ export const EmojiBoard = async (props: Props) => {
 
 	return (
 		<div className='relative z-10 hidden aspect-[2/1] h-auto w-full border-y border-border md:block'>
-			<EmojiAdd />
-			<Board serverEmojis={emojis ?? []} />
+			<Suspense>
+				<EmojiAdd />
+				<Board serverEmojis={emojis ?? []} />
+			</Suspense>
 
 			<div className='pointer-events-none absolute left-0 top-0 z-50 h-full w-16 bg-gradient-to-r from-background to-secondary/0' />
 			<div className='pointer-events-none absolute right-0 top-0 z-50 h-full w-16 bg-gradient-to-l from-background to-secondary/0' />

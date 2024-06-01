@@ -1,3 +1,4 @@
+import { Magnetic } from '@/components/Magnetic'
 import TypographyH2 from '@/components/ui/Typography/H2'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -24,11 +25,12 @@ export const ContactCTASection = (props: Props) => {
 
 			<Link
 				href={'/contact'}
-				className={cn(
-					buttonVariants(),
-					'py-8 text-2xl leading-none sm:py-10 sm:text-3xl md:py-12 md:text-4xl lg:py-16 lg:text-5xl'
-				)}>
-				Get in touch
+				className={cn(buttonVariants(), 'p-0 text-3xl leading-none sm:text-4xl md:text-5xl lg:text-6xl')}>
+				<Magnetic
+					strength={{ x: 0.1 }}
+					className='block w-full py-8 text-center hover:underline sm:py-10 md:py-12 lg:py-16'>
+					Get in touch
+				</Magnetic>
 			</Link>
 		</section>
 	)
