@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
+import { Suspense } from 'react'
 import { Board } from './components/Board'
 import { EmojiAdd } from './components/EmojiAdd'
-import { Suspense } from 'react'
 
 type Props = {}
 

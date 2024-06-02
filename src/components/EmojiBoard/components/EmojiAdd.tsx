@@ -48,7 +48,7 @@ export const EmojiAdd = ({ className }: Props) => {
 		setHasMounted(true)
 	})
 
-	if (hasMounted && (hasAlreadyAddedEmoji || !isMd)) return null
+	if (!hasMounted || hasAlreadyAddedEmoji || !isMd) return null
 
 	return (
 		<>
@@ -71,8 +71,8 @@ export const EmojiAdd = ({ className }: Props) => {
 					<Suspense>
 						<EmojiPicker
 							reactionsDefaultOpen={true}
-							onReactionClick={e => setSelectedEmoji(e.emoji)}
-							onEmojiClick={e => setSelectedEmoji(e.emoji)}
+							onReactionClick={emojiObj => setSelectedEmoji(emojiObj.emoji)}
+							onEmojiClick={emojiObj => setSelectedEmoji(emojiObj.emoji)}
 							theme={Theme.DARK}
 							emojiStyle={EmojiStyle.NATIVE}
 							searchDisabled
