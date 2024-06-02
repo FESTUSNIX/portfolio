@@ -25,11 +25,11 @@ export const ContactCTASection = (props: Props) => {
 
 			<Link
 				href={'/contact'}
-				className={cn(buttonVariants(), 'p-0 text-3xl leading-none sm:text-4xl md:text-5xl lg:text-6xl')}>
+				className={cn(buttonVariants(), 'group p-0 text-3xl leading-none sm:text-4xl md:text-5xl lg:text-6xl')}>
 				<Magnetic
 					strength={{ x: 0.1 }}
 					className='block w-full py-8 text-center hover:underline sm:py-10 md:py-12 lg:py-16'>
-					Get in touch
+					<span className='transition-elastic-out block group-active:scale-90'>Get in touch</span>
 				</Magnetic>
 			</Link>
 		</section>

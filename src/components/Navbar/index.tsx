@@ -19,9 +19,9 @@ const Navbar = () => {
 			)}>
 			<nav className='relative flex items-center justify-between mix-blend-difference'>
 				<div className='hidden items-center gap-6 lg:flex'>
-					<Link href={`mailto:${contactInfo.email}`} className='py-0.5 text-sm uppercase hover:underline'>
+					<Link href={`mailto:${contactInfo.email}`} className='group py-0.5 text-sm uppercase hover:underline'>
 						<Magnetic as='p' strength={{ x: 0.1, y: 0.3 }}>
-							{contactInfo.email}
+							<span className='transition-elastic-out block group-active:scale-90'>{contactInfo.email}</span>
 						</Magnetic>
 					</Link>
 
@@ -50,7 +50,7 @@ const Navbar = () => {
 								href={link.href}
 								className='border-foreground text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border'>
 								<Magnetic strength={{ x: 0.1, y: 0.3 }} className='py-0.5 group-last:px-3 group-last:py-1'>
-									{link.label}
+									<span className='transition-elastic-out block group-active:scale-90'>{link.label}</span>
 								</Magnetic>
 							</Link>
 						</li>

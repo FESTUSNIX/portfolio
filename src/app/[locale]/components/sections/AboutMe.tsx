@@ -8,7 +8,7 @@ export const AboutMeSection = (props: Props) => {
 			</h2>
 			<p className='max-w-xs font-light leading-tight text-muted-foreground sm:self-end sm:text-right sm:text-lg md:max-w-md md:text-xl lg:max-w-sm lg:self-start'>
 				I&apos;m an 18-year-old web developer from Poland. When I&apos;m not working, you&apos;ll find me kickboxing,
-				biking and drinking (a bit to much) coffee.
+				cycling and drinking (a bit to much) coffee.
 			</p>
 		</section>
 	)

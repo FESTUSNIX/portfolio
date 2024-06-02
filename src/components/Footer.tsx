@@ -16,7 +16,11 @@ export const Footer = (props: Props) => {
 					{Object.values(SOCIAL_MEDIA_LINKS).map(link => (
 						<li key={link.href}>
 							<Magnetic>
-								<Link href={link.href} target='_blank' rel='noopener' className='py-1 uppercase hover:underline'>
+								<Link
+									href={link.href}
+									target='_blank'
+									rel='noopener'
+									className='transition-elastic-out block py-1 uppercase hover:underline active:scale-90'>
 									{link.name}
 								</Link>
 							</Magnetic>

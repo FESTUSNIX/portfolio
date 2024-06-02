@@ -131,15 +131,17 @@ export const ContactForm = ({}: Props) => {
 					</div>
 
 					<Button
-						className='ml-auto mt-12 block p-0 text-2xl md:text-3xl lg:mt-16'
+						className='group ml-auto mt-12 block p-0 text-2xl md:text-3xl lg:mt-16'
 						disabled={isPending}
 						type='submit'
 						onClick={() => {
 							form.handleSubmit(e => sendEmail(e))()
 						}}>
-						<Magnetic className='px-16 py-6 hover:underline'>
+						<Magnetic as='p' className='px-16 py-6 hover:underline'>
 							<>
-								<span>{isPending ? 'Sending it' : 'Send it'}</span>
+								<span className='transition-elastic-out block group-active:scale-90'>
+									{isPending ? 'Sending it' : 'Send it'}
+								</span>
 								{isPending && <span className='ml-4'>🚀</span>}
 							</>
 						</Magnetic>

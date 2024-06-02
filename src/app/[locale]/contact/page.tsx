@@ -41,12 +41,12 @@ const ContactPage = (props: Props) => {
 				</div>
 				<Link
 					href={`mailto:${contactInfo.email}`}
-					className='w-full overflow-hidden rounded-full border border-foreground text-center'>
+					className='group w-full overflow-hidden rounded-full border border-foreground text-center'>
 					<Magnetic
-						as='span'
+						as='p'
 						strength={{ x: 0.05 }}
 						className='block overflow-hidden rounded-full px-4 py-6 text-2xl uppercase leading-none hover:underline sm:text-3xl md:text-4xl lg:px-16 lg:py-8 lg:text-5xl xl:text-6xl'>
-						{contactInfo.email}
+						<span className='transition-elastic-out block group-active:scale-90'>{contactInfo.email}</span>
 					</Magnetic>
 				</Link>
 				<div className='flex items-center justify-end gap-2 lg:gap-4'>
@@ -69,12 +69,12 @@ const SocialMediaPill = ({ href, label }: { href: string; label: string }) => {
 			href={href}
 			target='_blank'
 			rel='noopener'
-			className='shrink-0 rounded-full border border-border text-muted-foreground duration-300 hover:border-foreground hover:text-foreground hover:underline'>
+			className='group shrink-0 rounded-full border border-border text-muted-foreground duration-300 hover:border-foreground hover:text-foreground hover:underline'>
 			<Magnetic
-				as='span'
+				as='p'
 				strength={{ x: 0.1 }}
 				className='block px-6 py-4 uppercase leading-none sm:px-8 sm:text-lg md:text-xl lg:text-2xl xl:px-10 xl:py-6 xl:text-3xl'>
-				{label}
+				<span className='transition-elastic-out block group-active:scale-90'>{label}</span>
 			</Magnetic>
 		</Link>
 	)
