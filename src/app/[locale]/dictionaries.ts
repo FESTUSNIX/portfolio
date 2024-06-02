@@ -1,4 +1,3 @@
-import 'server-only'
 import { Locales } from '../../i18nConfig'
 
 const dictionaries = {

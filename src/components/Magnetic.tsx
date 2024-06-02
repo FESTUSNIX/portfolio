@@ -49,7 +49,7 @@ export const Magnetic = ({ children, strength, maxMove, className, as }: Magneti
 			onMouseMove={handleMouse}
 			onMouseLeave={reset}
 			style={{ x, y }}
-			className={cn('transition-elastic-out relative', className)}>
+			className={cn('transition-elastic-out relative overflow-hidden', className)}>
 			{children}
 		</Component>
 	)

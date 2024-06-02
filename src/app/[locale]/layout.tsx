@@ -46,18 +46,20 @@ export function generateStaticParams() {
 	return i18nConfig.locales.map(locale => ({ locale }))
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 	params: { locale }
 }: {
 	children: React.ReactNode
 	params: { locale: Locales }
 }) {
+	const dict = await getDictionary(locale)
+
 	return (
 		<html lang={locale}>
 			<body className={`${body.variable} ${heading.variable}`}>
-				<Providers>
-					<Navbar />
+				<Providers locale={locale}>
+					<Navbar locale={locale} dict={dict} />
 					{children}
 					<Footer />
 				</Providers>

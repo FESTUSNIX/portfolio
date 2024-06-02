@@ -27,6 +27,7 @@
 		"beautiful-react-hooks": "^5.0.2",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.0.0",
+		"date-fns": "^3.6.0",
 		"emoji-picker-react": "^4.9.3",
 		"framer-motion": "^10.16.16",
 		"lucide-react": "^0.279.0",

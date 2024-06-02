@@ -7,11 +7,17 @@ type Props = {
 	dict: Dictionary
 }
 
-export const HeroSection = ({ dict }: Props) => {
+export const HeroSection = ({
+	dict: {
+		home: {
+			hero: { greeting }
+		}
+	}
+}: Props) => {
 	return (
 		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center pt-12 md:pt-24'>
 			<div className='grid-container'>
-				<h1 className='sr-only'>Hello I&apos;m Mateusz Hada</h1>
+				<h1 className='sr-only'>{greeting} Mateusz Hada</h1>
 
 				<div className='relative lg:mt-12 xl:mt-16 2xl:mt-32'>
 					<div
@@ -20,7 +26,7 @@ export const HeroSection = ({ dict }: Props) => {
 						<div className='flex flex-col md:flex-row md:items-end md:justify-between md:gap-16 lg:gap-24 xl:gap-32'>
 							<svg viewBox='0 0 110 13' className='mb-4 w-[30%] min-w-48 shrink-0 grow-0 md:mb-1 md:w-1/4'>
 								<text x='0' y='12'>
-									Hello, I&apos;m
+									{greeting}
 								</text>
 							</svg>
 							<svg viewBox='0 0 100 13' className='w-full grow-0 md:w-[75%]'>

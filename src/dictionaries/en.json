@@ -1,18 +1,82 @@
 {
+	"locale": "en",
 	"pageMeta": {
 		"title": "Mateusz Hada | Web Developer",
 		"description": "Crafting seamless digital experiences that captivate and innovate. I'm Mateusz, a passionate Web Developer & Freelancer, turning ideas into realities."
 	},
-	"description": "Crafting seamless digital experiences that captivate and innovate. I'm a passionate Web Developer & Freelancer based in Poland, turning ideas into interactive realities. Let's build something extraordinary together.",
-	"projects": {
-		"heading": "Check out my featured work"
+	"home": {
+		"hero": {
+			"greeting": "Hello, I'm"
+		},
+		"aboutMe": {
+			"heading": "Creating websites that grow with Your business & make Your brand stand out",
+			"description": "I'm an 18-year-old web developer from Poland. When I'm not working, you'll find me kickboxing, cycling and drinking (a bit to much) coffee."
+		},
+		"projects": {
+			"heading": { "top": "My latest", "bottom": "works" }
+		},
+		"testimonials": {
+			"heading": "See what people have to say"
+		},
+		"contactCTA": {
+			"heading": "Let's work together",
+			"button": "Get in touch"
+		},
+		"emojiBoard": {
+			"addButton": {
+				"default": "Add your emoji",
+				"confirm": "Confirm position"
+			},
+			"cancelButton": "Cancel"
+		}
 	},
-	"contactHeader": {
-		"prefix": "Contact me at",
-		"sufix": "or on"
+	"contact": {
+		"heading": "Get in touch",
+		"form": {
+			"heading": "Contact form",
+			"fields": {
+				"name": {
+					"placeholder": "Your name",
+					"label": "Hello, my name is",
+					"error": "Please provide your name"
+				},
+				"email": {
+					"placeholder": "Your email address",
+					"label": "and you can reach me on",
+					"error": "Please provide a valid email address"
+				},
+				"message": {
+					"placeholder": "Service / Your message",
+					"label": "I'm looking for",
+					"error": "Please provide a message"
+				}
+			},
+			"button": {
+				"default": "Send it",
+				"pending": "Sending..."
+			},
+			"success": "Email sent!",
+			"error": "There was an error sending the email."
+		},
+		"details": {
+			"heading": "Contact details"
+		}
 	},
-	"spotify": {
-		"listening": "Currently vibing to",
-		"notListening": "Not Listening"
+	"navigation": {
+		"availability": {
+			"available": "Available",
+			"unavailable": "Unavailable"
+		},
+		"links": {
+			"home": "Homepage",
+			"about": "About Me",
+			"projects": "Projects",
+			"contact": "Contact Me"
+		}
+	},
+	"global": {
+		"next": "Next",
+		"previous": "Previous",
+		"close": "Close"
 	}
 }

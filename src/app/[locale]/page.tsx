@@ -20,15 +20,13 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 		<main className='grid-container min-h-screen overflow-x-hidden'>
 			<HeroSection dict={dict} />
 
-			<AboutMeSection />
+			<AboutMeSection dict={dict} />
 
-			<ProjectsSection />
+			<ProjectsSection dict={dict} />
 
-			<TestimonialsSection />
+			<TestimonialsSection dict={dict} />
 
-			{/* Tech stack section */}
-
-			<ContactCTASection />
+			<ContactCTASection dict={dict} />
 
 			<Suspense>
 				<EmojiBoard />

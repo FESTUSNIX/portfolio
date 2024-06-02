@@ -1,6 +1,8 @@
 'use client'
 
+import { useLocaleContext } from '@/components/LocaleProvider'
 import { Testimonial } from '@/constants/TESTIMONIALS'
+import { useTranslation } from '@/lib/translations'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -11,6 +13,9 @@ type Props = {
 }
 
 export const TestimonialsContent = ({ testimonials }: Props) => {
+	const locale = useLocaleContext()
+	const { t } = useTranslation(locale)
+
 	const [index, setIndex] = useState(0)
 
 	const testimonial = testimonials[index]
@@ -43,12 +48,14 @@ export const TestimonialsContent = ({ testimonials }: Props) => {
 
 				<div className='flex items-center gap-1 text-muted-foreground max-sm:-mt-4'>
 					<button onClick={handlePrevious} className='p-2'>
+						<span className='sr-only'>{t('global.previous')}</span>
 						<ChevronLeft className='size-5' />
 					</button>
 					<span className='font-light'>
 						{index < 9 ? `0${index + 1}` : index + 1}/{testimonials.length}
 					</span>
 					<button onClick={handleNext} className='p-2'>
+						<span className='sr-only'>{t('global.next')}</span>
 						<ChevronRight className='size-5' />
 					</button>
 				</div>

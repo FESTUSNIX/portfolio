@@ -1,6 +1,7 @@
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
+import { TranslationFn } from '@/lib/translations'
 import { cn } from '@/lib/utils'
 import useLocalStorage from 'beautiful-react-hooks/useLocalStorage'
 import { type DOMRectValues } from 'beautiful-react-hooks/useResizeObserver'
@@ -13,9 +14,17 @@ type Props = {
 	rotation: number
 	containerDOMRect: DOMRectValues | undefined
 	setSelectedEmoji: (emoji: string | null) => void
+	translateFn: TranslationFn
 }
 
-export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation, setSelectedEmoji }: Props) => {
+export const AddButton = ({
+	selectedEmoji,
+	containerDOMRect,
+	position,
+	rotation,
+	setSelectedEmoji,
+	translateFn
+}: Props) => {
 	const supabase = createClient()
 
 	const [isLoading, setIsLoading] = useState(false)
@@ -63,7 +72,9 @@ export const AddButton = ({ selectedEmoji, containerDOMRect, position, rotation,
 				)}
 			</div>
 			<span className='py-1 pl-3 pr-4 uppercase leading-none'>
-				{selectedEmoji ? 'Confirm position' : 'Add your emoji'}
+				{selectedEmoji
+					? translateFn('home.emojiBoard.addButton.confirm')
+					: translateFn('home.emojiBoard.addButton.default')}
 			</span>
 		</button>
 	)

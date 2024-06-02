@@ -2,17 +2,26 @@ import TypographyH2 from '@/components/ui/Typography/H2'
 import { projects } from '@/constants/projects'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Dictionary } from '../../dictionaries'
 
-type Props = {}
+type Props = {
+	dict: Dictionary
+}
 
-export const ProjectsSection = (props: Props) => {
+export const ProjectsSection = ({
+	dict: {
+		home: {
+			projects: { heading }
+		}
+	}
+}: Props) => {
 	return (
 		<section id='projects' className='mt-32 scroll-m-20 md:mt-36 xl:mt-48'>
 			<TypographyH2 className='mb-12 text-right'>
-				<span className='block'>My latest </span>
+				<span className='block'>{heading.top} </span>
 				<span className='flex items-center gap-4 sm:gap-8 lg:gap-12'>
 					<span className='h-px grow bg-foreground' />
-					<span>works</span>
+					<span>{heading.bottom}</span>
 				</span>
 			</TypographyH2>
 

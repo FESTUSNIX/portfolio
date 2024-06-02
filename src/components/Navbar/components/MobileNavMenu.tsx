@@ -1,26 +1,28 @@
 'use client'
 
+import { Dictionary } from '@/app/[locale]/dictionaries'
+import { Portal } from '@/components/Portal'
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
 import { contactInfo } from '@/constants/contactInfo'
 import { useScrollBlock } from '@/hooks/useScrollBlock'
-import { cn } from '@/lib/utils'
+import { Locales } from '@/i18nConfig'
+import { cn, getDateLocale } from '@/lib/utils'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
+import { format } from 'date-fns'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname, useSelectedLayoutSegment } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
 import FocusLock from 'react-focus-lock'
 import { HamburgerIcon } from './HamburgerIcon'
-import { Portal } from '@/components/Portal'
 
 const variants = {
 	open: { x: 0 },
 	closed: { x: '100%' }
 }
 
-export const MobileNavMenu = () => {
+export const MobileNavMenu = ({ dict, locale }: { dict: Dictionary; locale: Locales }) => {
 	const pathname = usePathname()
 	const mdBreakpoint = useMediaQuery('(min-width: 640px)')
 	const activeSegment = useSelectedLayoutSegment()
@@ -92,14 +94,17 @@ export const MobileNavMenu = () => {
 										<div className='flex shrink-0 items-center gap-2'>
 											<div className='animate-blob-pulse size-3 rounded-full bg-[#3ADC71]' />
 											<p className='text-lg uppercase'>
-												available <span className='font-bold'>june 2024</span>
+												{dict.navigation.availability.available}{' '}
+												<span className='font-bold'>
+													{format(new Date(), 'LLLL yyyy', { locale: getDateLocale(locale) })}
+												</span>
 											</p>
 										</div>
 									</div>
 								</div>
 
 								<ul className='-mt-16 flex w-full flex-col gap-8'>
-									{[{ label: 'Homepage', href: '/' }, ...NAV_LINKS].map(link => (
+									{[{ accessorKey: 'home', href: '/' }, ...NAV_LINKS].map(link => (
 										<Link
 											key={link.href}
 											href={link.href}
@@ -109,7 +114,9 @@ export const MobileNavMenu = () => {
 											)}
 											onClick={() => handleChange(false, 'inProgress')}>
 											<div className='h-px w-full bg-foreground' />
-											<span className='shrink-0'>{link.label}</span>
+											<span className='shrink-0'>
+												{dict.navigation.links[link.accessorKey as keyof typeof dict.navigation.links]}
+											</span>
 										</Link>
 									))}
 								</ul>

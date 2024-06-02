@@ -1,22 +1,28 @@
-'use client'
-
+import { Dictionary } from '@/app/[locale]/dictionaries'
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
 import { contactInfo } from '@/constants/contactInfo'
-import { useScrollPosition } from '@/hooks/useScrollPosition'
-import { cn } from '@/lib/utils'
+import { Locales } from '@/i18nConfig'
+import { cn, getDateLocale } from '@/lib/utils'
+import { format } from 'date-fns'
 import Link from 'next/link'
+import LanguageChanger from '../LanguageChanger'
 import { Magnetic } from '../Magnetic'
+import { DynamicBg } from './components/DynamicBg'
 import { MobileNavMenu } from './components/MobileNavMenu'
 
-const Navbar = () => {
-	const { y } = useScrollPosition()
+type Props = {
+	dict: Dictionary
+	locale: Locales
+}
 
+const Navbar = ({ dict, locale }: Props) => {
 	return (
 		<header
 			className={cn(
-				'grid-container fixed left-0 z-50 mt-2 w-full border-b border-transparent px-0 py-4 duration-300',
-				y > 10 && 'mt-0 border-border bg-background/20 mix-blend-difference backdrop-blur-sm backdrop-sepia-[25%]'
+				'grid-container fixed left-0 z-50 w-full border-b border-transparent px-0 py-4 duration-300',
+				'has-[>.active]:border-border has-[>.active]:bg-background/20 has-[>.active]:mix-blend-difference has-[>.active]:backdrop-blur-sm has-[>.active]:backdrop-sepia-[25%]'
 			)}>
+			<DynamicBg />
 			<nav className='relative flex items-center justify-between mix-blend-difference'>
 				<div className='hidden items-center gap-6 lg:flex'>
 					<Link href={`mailto:${contactInfo.email}`} className='group py-0.5 text-sm uppercase hover:underline'>
@@ -28,9 +34,12 @@ const Navbar = () => {
 					<div className='flex items-center gap-1.5'>
 						<div className='animate-blob-pulse size-2.5 rounded-full bg-[#3ADC71]' />
 						<p className='text-sm uppercase'>
-							available <span className='font-bold'>june 2024</span>
+							{dict.navigation.availability.available}{' '}
+							<span className='font-bold'>{format(new Date(), 'LLLL yyyy', { locale: getDateLocale(locale) })}</span>
 						</p>
 					</div>
+
+					<LanguageChanger />
 				</div>
 
 				<Link
@@ -41,7 +50,7 @@ const Navbar = () => {
 					</Magnetic>
 				</Link>
 
-				<MobileNavMenu />
+				<MobileNavMenu dict={dict} locale={locale} />
 
 				<ul className={'hidden items-center gap-6 sm:flex'}>
 					{NAV_LINKS.map((link, i) => (
@@ -50,7 +59,9 @@ const Navbar = () => {
 								href={link.href}
 								className='border-foreground text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border'>
 								<Magnetic strength={{ x: 0.1, y: 0.3 }} className='py-0.5 group-last:px-3 group-last:py-1'>
-									<span className='transition-elastic-out block group-active:scale-90'>{link.label}</span>
+									<span className='transition-elastic-out block group-active:scale-90'>
+										{dict.navigation.links[link.accessorKey as keyof typeof dict.navigation.links]}
+									</span>
 								</Magnetic>
 							</Link>
 						</li>

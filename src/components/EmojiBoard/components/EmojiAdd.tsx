@@ -12,12 +12,17 @@ import EmojiPicker, { EmojiStyle, Theme } from 'emoji-picker-react'
 import { XIcon } from 'lucide-react'
 import { Suspense, useRef, useState } from 'react'
 import { AddButton } from './AddButton'
+import { useTranslation } from '@/lib/translations'
+import { useLocaleContext } from '@/components/LocaleProvider'
 
 type Props = {
 	className?: string
 }
 
 export const EmojiAdd = ({ className }: Props) => {
+	const locale = useLocaleContext()
+	const { t } = useTranslation(locale)
+
 	const RECOMMENDED_EMOJIS = ['2764-fe0f', '1f44d', '1f4bb', '1f60e', '1f44c', '1f916']
 
 	const container = useRef<HTMLDivElement>(null)
@@ -60,6 +65,7 @@ export const EmojiAdd = ({ className }: Props) => {
 						rotation={rotation}
 						containerDOMRect={containerDOMRect}
 						setSelectedEmoji={setSelectedEmoji}
+						translateFn={t}
 					/>
 				</Suspense>
 
@@ -133,7 +139,7 @@ export const EmojiAdd = ({ className }: Props) => {
 					<div className='-ml-px flex aspect-square h-full w-auto items-center justify-center rounded-full border text-destructive duration-300 group-hover:border-muted-foreground'>
 						<XIcon className='size-4' />
 					</div>
-					<span className='py-1 pl-3 pr-4 text-sm uppercase leading-none'>Cancel</span>
+					<span className='py-1 pl-3 pr-4 text-sm uppercase leading-none'>{t('home.emojiBoard.cancelButton')}</span>
 				</button>
 			)}
 		</>

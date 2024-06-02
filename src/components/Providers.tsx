@@ -2,15 +2,22 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React, { useState } from 'react'
+import { LocaleContextProvider } from './LocaleProvider'
+import { Locales } from '@/i18nConfig'
 
 type Props = {
 	children: React.ReactNode
+	locale: Locales
 }
 
-const Providers = ({ children }: Props) => {
+const Providers = ({ children, locale }: Props) => {
 	const [client] = useState(new QueryClient())
 
-	return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+	return (
+		<LocaleContextProvider locale={locale}>
+			<QueryClientProvider client={client}>{children}</QueryClientProvider>
+		</LocaleContextProvider>
+	)
 }
 
 export default Providers

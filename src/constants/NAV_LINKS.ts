@@ -1,4 +1,4 @@
 export const NAV_LINKS = [
-	{ label: 'Projects', href: '/#projects' },
-	{ label: 'Contact me', href: '/contact' }
+	{ accessorKey: 'projects', href: '/#projects' },
+	{ accessorKey: 'contact', href: '/contact' }
 ]
