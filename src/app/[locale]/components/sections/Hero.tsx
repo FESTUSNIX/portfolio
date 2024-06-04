@@ -1,5 +1,4 @@
-import { GridBackground } from '@/components/GridBackground'
-import { ArrowDownLeft } from 'lucide-react'
+import { Magnetic } from '@/components/Magnetic'
 import Image from 'next/image'
 import { Dictionary } from '../../dictionaries'
 
@@ -9,75 +8,89 @@ type Props = {
 
 export const HeroSection = ({
 	dict: {
+		locale,
 		home: {
-			hero: { greeting }
+			hero: { greeting, subheading }
 		}
 	}
 }: Props) => {
 	return (
 		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center pt-12 md:pt-24'>
-			<div className='grid-container'>
+			<div className='grid-container relative pt-24 md:pt-0 lg:pt-12'>
 				<h1 className='sr-only'>{greeting} Mateusz Hada</h1>
 
-				<div className='relative lg:mt-12 xl:mt-16 2xl:mt-32'>
+				<div className='group relative'>
 					<div
 						className='flex flex-col fill-foreground font-heading uppercase leading-none text-foreground'
 						aria-hidden>
-						<div className='flex flex-col md:flex-row md:items-end md:justify-between md:gap-16 lg:gap-24 xl:gap-32'>
-							<svg viewBox='0 0 110 13' className='mb-4 w-[30%] min-w-48 shrink-0 grow-0 md:mb-1 md:w-1/4'>
-								<text x='0' y='12'>
-									{greeting}
-								</text>
-							</svg>
-							<svg viewBox='0 0 100 13' className='w-full grow-0 md:w-[75%]'>
+						<svg
+							viewBox={locale === 'en' ? '0 0 37 13' : '0 0 55 16'}
+							className='z-30 mb-1 w-[50%] min-w-48 shrink-0 grow-0 mix-blend-difference md:w-[40%] lg:mb-4 lg:w-1/4'>
+							<text x='0' y={locale === 'en' ? '12' : '14'}>
+								{greeting}
+							</text>
+						</svg>
+						<div className='relative z-20 w-full grow-0 self-end mix-blend-difference md:w-[50%]'>
+							<svg viewBox='0 0 34 13'>
 								<text x='0' y='12'>
 									Mateusz
 								</text>
 							</svg>
 						</div>
 
-						<svg viewBox='0 0 61 13'>
+						<svg viewBox='0 0 19.5 13' className='z-20 mt-[-1%] w-full mix-blend-difference md:w-[65%] lg:mt-[-2.5%]'>
 							<text x='0' y='12'>
 								Hada
 							</text>
 						</svg>
 					</div>
 
-					<div className='absolute -right-[5%] top-0 -z-10 w-[75%] max-w-md -translate-y-1/2 overflow-hidden rounded-sm lg:max-w-lg xl:-right-[10%] xl:max-w-xl 2xl:-top-6'>
-						<Image
-							src='/images/me-horizontal.png'
-							alt='Mateusz Hada smiling to the camera'
-							width={400}
-							height={400}
-							className='h-full w-full object-cover'
-						/>
+					<div className='hero-img absolute -right-[5%] top-6 z-[25] w-[75%] max-w-md -translate-y-1/2 rotate-3 rounded-sm duration-300 hover:!blur-0 group-has-[.hero-img:hover]:blur-md md:left-0 md:top-[28%] md:w-[45%] md:max-w-none md:rotate-0 lg:left-[2.5%] lg:top-[26%] lg:z-20 lg:-rotate-3'>
+						<Magnetic strength={{ x: 0.1, y: 0.1 }}>
+							<Image
+								src='/images/me-horizontal.png'
+								alt='Mateusz Hada'
+								width={600}
+								height={400}
+								className='pointer-events-none size-full rounded-sm object-cover shadow-md'
+							/>
+						</Magnetic>
 					</div>
-					<div className='absolute bottom-[20%] left-[5%] -z-10 w-[50%] max-w-64 translate-y-full overflow-hidden rounded-sm lg:max-w-xs xl:max-w-sm'>
-						<Image
-							src='/images/me-vertical.png'
-							alt='Mateusz Hada kickboxing'
-							width={400}
-							height={400}
-							className='h-full w-full object-cover'
-						/>
+					<div className='hero-img absolute bottom-[10%] left-[2%] z-10 w-[50%] max-w-64 translate-y-full -rotate-6 rounded-sm duration-300 hover:!blur-0 group-has-[.hero-img:hover]:blur-md md:bottom-[53.5%] md:left-auto md:right-0 md:w-[31%] md:max-w-none md:rotate-0 lg:bottom-[65%] lg:rotate-6'>
+						<Magnetic strength={{ x: 0.1, y: 0.1 }}>
+							<Image
+								src='/images/me-vertical.png'
+								alt='Mateusz Hada kickboxing'
+								width={600}
+								height={800}
+								className='pointer-events-none aspect-[3/4] size-full rounded-sm object-cover'
+							/>
+						</Magnetic>
 					</div>
 				</div>
 
-				<div className='ml-auto w-max'>
-					<div className='ml-auto mt-12 w-max md:ml-16 md:mt-24 lg:-ml-16 lg:mt-12 xl:-ml-24'>
-						<ArrowDownLeft
-							className='size-12 stroke-1 md:size-16 md:-rotate-90 lg:size-20 xl:size-24'
-							strokeLinecap='butt'
-						/>
-					</div>
-
-					<h2 className='mt-12 text-right text-2xl uppercase leading-none mix-blend-difference sm:text-3xl md:mt-8 md:text-4xl lg:mt-0 xl:text-5xl'>
-						<span className='block'>Freelance</span>
-						<span className='block'>Developer & Designer</span>
+				<div className='ml-auto mt-16 w-max max-w-36 text-right text-foreground sm:max-w-[11.5rem] md:absolute md:bottom-[-2%] md:mt-0 md:w-full md:max-w-none md:-translate-y-1/2 md:text-center'>
+					<h2 className='text-2xl uppercase leading-none mix-blend-difference sm:text-3xl md:sr-only md:text-4xl xl:text-5xl'>
+						{subheading}
 					</h2>
+					<svg
+						viewBox={locale === 'en' ? '0 0 350 16' : '0 0 297 16'}
+						aria-hidden
+						className='z-20 hidden w-full fill-foreground uppercase leading-none mix-blend-difference md:block'>
+						<text x='0' y='13'>
+							{subheading}
+						</text>
+					</svg>
 				</div>
+				<svg
+					viewBox={locale === 'en' ? '0 0 350 16' : '0 0 297 16'}
+					aria-hidden
+					className='text-stroke-foreground pointer-events-none absolute bottom-[-2%] z-40 hidden w-full -translate-y-1/2 select-none fill-transparent stroke-foreground stroke-[0.2px] uppercase leading-none md:block'>
+					<text x='0' y='13'>
+						{subheading}
+					</text>
+				</svg>
 			</div>
-			<GridBackground className='bg-grid-large-white/15 md:bg-grid-xl-white/15' />
 		</header>
 	)
 }

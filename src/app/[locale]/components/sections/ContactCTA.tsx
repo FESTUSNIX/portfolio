@@ -19,17 +19,14 @@ export const ContactCTASection = ({
 }: Props) => {
 	return (
 		<section className='my-24 flex flex-col gap-6 sm:gap-8 lg:gap-12'>
-			<TypographyH2 className='uppercase'>
-				<span className='block'>{heading.split(' ').slice(0, -1).join(' ')}</span>
-				<span className='relative block w-full'>
-					{heading.split(' ').slice(-1)}
-					<ArrowDownLeft
-						className='absolute right-0 top-1/2 hidden h-[1.5em] w-auto -translate-y-1/2 stroke-2 min-[360px]:block'
-						strokeLinecap='butt'
-						strokeLinejoin='round'
-						aria-hidden
-					/>
-				</span>
+			<TypographyH2 className='flex items-end justify-between gap-8 uppercase'>
+				<span>{heading}</span>
+				<ArrowDownLeft
+					className='hidden aspect-square h-[1em] w-auto shrink-0 translate-x-[10%] translate-y-[5%] stroke-2 min-[360px]:block'
+					strokeLinecap='butt'
+					strokeLinejoin='round'
+					aria-hidden
+				/>
 			</TypographyH2>
 
 			<Link

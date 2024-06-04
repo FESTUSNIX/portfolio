@@ -6,7 +6,8 @@
 	},
 	"home": {
 		"hero": {
-			"greeting": "Hello, I'm"
+			"greeting": "Hello, I'm",
+			"subheading": "Freelance web developer & designer based in poland"
 		},
 		"aboutMe": {
 			"heading": "Creating websites that grow with Your business & make Your brand stand out",

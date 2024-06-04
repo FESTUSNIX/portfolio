@@ -10,6 +10,7 @@ type Props = {
 
 export const TestimonialsSection = async ({
 	dict: {
+		locale,
 		home: {
 			testimonials: { heading }
 		}
@@ -19,7 +20,10 @@ export const TestimonialsSection = async ({
 
 	return (
 		<section className='mt-32 md:mt-36 xl:mt-48'>
-			<TypographyH2 className='mb-8 text-balance text-center'>{heading}</TypographyH2>
+			<TypographyH2
+				className={cn('mx-auto mb-8 max-w-3xl text-balance text-center', locale === 'pl' && 'max-w-4xl xl:max-w-5xl')}>
+				{heading}
+			</TypographyH2>
 
 			<div className='relative py-24 [clip-path:inset(-1rem)]'>
 				<TestimonialsContent testimonials={testimonials} />

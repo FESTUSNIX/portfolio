@@ -58,6 +58,11 @@ module.exports = {
 				heading: ['var(--font-heading)'],
 				body: ['var(--font-body)']
 			},
+			fontSize: {
+				'10xl': '9rem',
+				'11xl': '11rem',
+				'12xl': '12rem'
+			},
 			keyframes: {
 				'accordion-down': {
 					from: { height: 0 },

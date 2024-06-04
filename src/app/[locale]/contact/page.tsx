@@ -22,13 +22,16 @@ const ContactPage = async ({ params: { locale } }: { params: { locale: Locales }
 			<header className='my-24 flex h-max items-end justify-between gap-x-24'>
 				<h1
 					className={cn(
-						'max-w-screen-sm font-heading text-5xl leading-none sm:text-6xl md:max-w-screen-md md:text-7xl lg:text-8xl xl:max-w-screen-lg xl:text-9xl',
-						locale === 'pl' && 'text-4xl'
+						'max-w-screen-sm font-heading text-8xl uppercase leading-none sm:text-9xl md:max-w-screen-md md:text-10xl lg:text-12xl xl:max-w-none xl:text-[16rem]',
+						locale === 'pl' && 'xl:text-[12rem]'
 					)}>
 					{dict.heading}
 				</h1>
 
-				<ArrowDownLeftIcon className='hidden size-16 shrink-0 sm:block md:size-20 lg:size-24' strokeLinecap='butt' />
+				<ArrowDownLeftIcon
+					className='mb-[1.5%] hidden size-16 shrink-0 sm:block md:size-20 lg:size-24'
+					strokeLinecap='butt'
+				/>
 			</header>
 
 			<section>

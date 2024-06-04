@@ -12,7 +12,7 @@ import { getDictionary } from './dictionaries'
 
 const body = Oswald({ subsets: ['latin-ext'], variable: '--font-body' })
 const heading = localFont({
-	src: '../../../public/fonts/TFSpike.ttf',
+	src: '../../../public/fonts/Humane-Black.otf',
 	variable: '--font-heading',
 	display: 'swap'
 })

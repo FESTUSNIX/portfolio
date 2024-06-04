@@ -6,7 +6,8 @@
 	},
 	"home": {
 		"hero": {
-			"greeting": "Czesc, jestem"
+			"greeting": "Cześć, jestem",
+			"subheading": "Freelance web developer & designer z Polski"
 		},
 		"aboutMe": {
 			"heading": "Tworzę strony internetowe, które pomagają Twojemu biznesowi rosnąć",
@@ -16,10 +17,10 @@
 			"heading": { "top": "Moje ostatnie", "bottom": "projekty" }
 		},
 		"testimonials": {
-			"heading": "Zobacz co inni maja do powiedzenia"
+			"heading": "Zobacz co inni mają do powiedzenia"
 		},
 		"contactCTA": {
-			"heading": "Stworzmy cos razem",
+			"heading": "Stwórzmy coś razem",
 			"button": "Napisz do mnie"
 		},
 		"emojiBoard": {
@@ -31,7 +32,7 @@
 		}
 	},
 	"contact": {
-		"heading": "Stworzmy cos razem",
+		"heading": "Stwórzmy coś razem",
 		"form": {
 			"heading": "Formularz kontaktowy",
 			"fields": {
