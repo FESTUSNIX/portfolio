@@ -52,6 +52,7 @@ export const HeroSection = ({
 								alt='Mateusz Hada'
 								width={600}
 								height={400}
+								priority
 								className='pointer-events-none size-full rounded-sm object-cover shadow-md'
 							/>
 						</Magnetic>
@@ -63,6 +64,7 @@ export const HeroSection = ({
 								alt='Mateusz Hada kickboxing'
 								width={600}
 								height={800}
+								priority
 								className='pointer-events-none aspect-[3/4] size-full rounded-sm object-cover'
 							/>
 						</Magnetic>

@@ -29,33 +29,34 @@ export const ProjectsSection = ({
 
 			<ul className='grid gap-4 lg:grid-cols-2'>
 				{projects.map((project, i) => (
-					<Link
-						key={`project-${i}`}
-						href={project.href}
-						target='_blank'
-						className='group relative aspect-[4/3] overflow-hidden rounded-md last:odd:col-span-full'>
-						<div className='absolute inset-0 z-10 flex flex-col flex-wrap justify-between px-4 py-3 md:flex-row md:content-between md:items-start md:gap-4'>
-							<div className='w-max rounded-full border border-border bg-background/80 px-2 py-1 text-sm font-light uppercase leading-none text-foreground backdrop-blur-md'>
-								{project.name}
+					<li key={`project-${i}`} className='last:odd:col-span-full'>
+						<Link
+							href={project.href}
+							target='_blank'
+							className='group relative aspect-[4/3] overflow-hidden rounded-md'>
+							<div className='absolute inset-0 z-10 flex flex-col flex-wrap justify-between px-4 py-3 md:flex-row md:content-between md:items-start md:gap-4'>
+								<div className='w-max rounded-full border border-border bg-background/80 px-2 py-1 text-sm font-light uppercase leading-none text-foreground backdrop-blur-md'>
+									{project.name}
+								</div>
+
+								<ul className='flex flex-wrap-reverse items-center gap-1'>
+									{project.tags.map((tag, i) => (
+										<li key={`tag-${i}`}>
+											<span className='inline-block w-max rounded-full border border-foreground/20 bg-background/40 px-2 py-1 text-xs font-light uppercase !leading-none text-foreground backdrop-blur-md lg:text-sm'>
+												{PROJECT_TAGS[tag][locale as Locales]}
+											</span>
+										</li>
+									))}
+								</ul>
 							</div>
 
-							<ul className='flex flex-wrap-reverse items-center gap-1'>
-								{project.tags.map((tag, i) => (
-									<li key={`tag-${i}`}>
-										<span className='inline-block w-max rounded-full border border-foreground/20 bg-background/40 px-2 py-1 text-xs font-light uppercase !leading-none text-foreground backdrop-blur-md lg:text-sm'>
-											{PROJECT_TAGS[tag][locale as Locales]}
-										</span>
-									</li>
-								))}
-							</ul>
-						</div>
-
-						<Image
-							src={project.image}
-							alt={`${project.name}`}
-							className='z-0 size-full rounded-md object-cover brightness-90 duration-200 ease-in group-hover:brightness-100 md:brightness-50'
-						/>
-					</Link>
+							<Image
+								src={project.image}
+								alt={`${project.name}`}
+								className='z-0 size-full rounded-md object-cover brightness-90 duration-200 ease-in group-hover:brightness-100 md:brightness-50'
+							/>
+						</Link>
+					</li>
 				))}
 			</ul>
 		</section>

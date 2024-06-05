@@ -75,7 +75,6 @@ const Avatar = ({ image, name, onClick, className, isActive }: AvatarProps) => {
 					height={200}
 					className='pointer-events-none select-none object-cover'
 				/>
-				<span className='sr-only'>{name}</span>
 			</button>
 		</AvatarMagnetic>
 	)
