@@ -1,9 +1,10 @@
 'use client'
 
+import { Locales } from '@/i18nConfig'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React, { useState } from 'react'
+import { LayoutEmbeds } from './LayoutEmbeds'
 import { LocaleContextProvider } from './LocaleProvider'
-import { Locales } from '@/i18nConfig'
 
 type Props = {
 	children: React.ReactNode
@@ -16,6 +17,7 @@ const Providers = ({ children, locale }: Props) => {
 	return (
 		<LocaleContextProvider locale={locale}>
 			<QueryClientProvider client={client}>{children}</QueryClientProvider>
+			<LayoutEmbeds />
 		</LocaleContextProvider>
 	)
 }

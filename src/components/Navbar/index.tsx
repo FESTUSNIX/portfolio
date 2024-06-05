@@ -5,6 +5,7 @@ import { Locales } from '@/i18nConfig'
 import { cn, getDateLocale } from '@/lib/utils'
 import { format } from 'date-fns'
 import Link from 'next/link'
+import Logo from '../../../public/assets/logo.svg'
 import LanguageChanger from '../LanguageChanger'
 import { Magnetic } from '../Magnetic'
 import { DynamicBg } from './components/DynamicBg'
@@ -30,7 +31,6 @@ const Navbar = ({ dict, locale }: Props) => {
 							<span className='transition-elastic-out block group-active:scale-90'>{contactInfo.email}</span>
 						</Magnetic>
 					</Link>
-
 					<div className='flex items-center gap-1.5'>
 						<div className='animate-blob-pulse size-2.5 rounded-full bg-[#3ADC71]' />
 						<p className='text-sm uppercase'>
@@ -38,15 +38,15 @@ const Navbar = ({ dict, locale }: Props) => {
 							<span className='font-bold'>{format(new Date(), 'LLLL yyyy', { locale: getDateLocale(locale) })}</span>
 						</p>
 					</div>
-
 					<LanguageChanger />
 				</div>
 
 				<Link
 					href={'/'}
-					className='group z-50 w-max pt-1 font-heading text-2xl leading-none lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
-					<Magnetic strength={{ x: 0.15 }} className='group-hover:rainbow-background'>
-						HADA
+					className='group z-50 w-max lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
+					<Magnetic strength={{ x: 0.15 }}>
+						<span className='sr-only'>{dict.navigation.links.home}</span>
+						<Logo className='group-hover:rainbow-background h-6 w-auto fill-foreground [clip-path:url("#brand-logo-clip")] group-hover:fill-transparent' />
 					</Magnetic>
 				</Link>
 
