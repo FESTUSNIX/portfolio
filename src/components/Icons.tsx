@@ -26,7 +26,7 @@ export const Icons = {
 		en: (props: LucideProps) => (
 			<svg {...props} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7410 3900'>
 				<rect width='7410' height='3900' fill='#b22234' />
-				<path d='M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0' stroke='#fff' stroke-width='300' />
+				<path d='M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0' stroke='#fff' strokeWidth='300' />
 				<rect width='2964' height='2100' fill='#3c3b6e' />
 				<g fill='#fff'>
 					<g id='s18'>
@@ -65,7 +65,7 @@ export const Icons = {
 			<clipPath id='a'>
 				<path d='m0 0h884v1279h-884z' />
 			</clipPath>
-			<g clip-path='url(#a)'>
+			<g clipPath='url(#a)'>
 				<path d='m791.109 297.518-.878-.516-2.03-.619c.817.689 1.839 1.089 2.908 1.135z' />
 				<path d='m803.896 388.891-.98.275' />
 				<path d='m791.484 297.377c-.125-.016-.247-.045-.366-.087-.007.081-.007.163 0 .244.134-.018.261-.072.366-.157z' />

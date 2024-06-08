@@ -1,13 +1,25 @@
 import { GridBackground } from '@/components/GridBackground'
 import { Magnetic } from '@/components/Magnetic'
+import { CONTACT_INFO } from '@/constants/CONTACT_INFO'
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
-import { contactInfo } from '@/constants/contactInfo'
 import { Locales } from '@/i18nConfig'
 import { cn } from '@/lib/utils'
 import { ArrowDownLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 import { getDictionary } from '../dictionaries'
 import { ContactForm } from './components/ContactForm'
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
+	const {
+		contact: { metadata }
+	} = await getDictionary(locale)
+
+	return {
+		title: metadata.title,
+		description: metadata.description
+	}
+}
 
 const ContactPage = async ({ params: { locale } }: { params: { locale: Locales } }) => {
 	const { contact: dict } = await getDictionary(locale)
@@ -50,13 +62,13 @@ const ContactPage = async ({ params: { locale } }: { params: { locale: Locales }
 					<div className='ml-8 hidden h-px w-full grow bg-border sm:block' />
 				</div>
 				<Link
-					href={`mailto:${contactInfo.email}`}
+					href={`mailto:${CONTACT_INFO.email}`}
 					className='group w-full overflow-hidden rounded-full border border-foreground text-center'>
 					<Magnetic
 						as='p'
 						strength={{ x: 0.05 }}
 						className='block overflow-hidden rounded-full px-4 py-6 text-2xl uppercase leading-none hover:underline sm:text-3xl md:text-4xl lg:px-16 lg:py-8 lg:text-5xl xl:text-6xl'>
-						<span className='transition-elastic-out block group-active:scale-90'>{contactInfo.email}</span>
+						<span className='transition-elastic-out block group-active:scale-90'>{CONTACT_INFO.email}</span>
 					</Magnetic>
 				</Link>
 				<div className='flex items-center justify-end gap-2 lg:gap-4'>

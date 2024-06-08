@@ -12,7 +12,7 @@ type Project = {
 	tags: ProjectTagKeys[]
 }
 
-export const projects: Project[] = [
+export const PROJECTS: Project[] = [
 	{
 		href: 'https://h2otrzebinia.pl/',
 		name: 'H2O Artykuły Wod-Kan, Gaz, C.O.',

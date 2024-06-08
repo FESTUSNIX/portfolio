@@ -9,10 +9,16 @@ import { ProjectsSection } from './components/sections/Projects'
 import { TestimonialsSection } from './components/sections/Testimonials'
 import { getDictionary } from './dictionaries'
 
-export const metadata: Metadata = {
-	title: 'Mateusz Hada'
-}
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
+	const {
+		home: { metadata }
+	} = await getDictionary(locale)
 
+	return {
+		title: metadata.title,
+		description: metadata.description
+	}
+}
 export default async function Home({ params: { locale } }: { params: { locale: Locales } }) {
 	const dict = await getDictionary(locale)
 

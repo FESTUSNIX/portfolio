@@ -1,10 +1,14 @@
 {
 	"locale": "pl",
-	"pageMeta": {
+	"openGraph": {
 		"title": "Mateusz Hada | Web Developer",
 		"description": "Nowoczesne, interaktywne strony i aplikacje internetowe dostępne dla każdego. Tworzę unikalne rozwiązania, skrojone na miarę Twoich potrzeb."
 	},
 	"home": {
+		"metadata": {
+			"title": "Mateusz Hada | Freelance Developer & Designer",
+			"description": "Freelance web developer & designer z Polski. Tworzę nowoczesne, interaktywne strony i aplikacje internetowe dostępne dla każdego."
+		},
 		"hero": {
 			"greeting": "Cześć, jestem",
 			"subheading": "Freelance web developer & designer z Polski"
@@ -32,6 +36,10 @@
 		}
 	},
 	"contact": {
+		"metadata": {
+			"title": "Kontakt",
+			"description": "Skontaktuj się ze mną, aby omówić swój projekt, zadać pytanie lub po prostu przywitać się. Zawsze jestem otwarty na nowe możliwości i współpracę."
+		},
 		"heading": "Stwórzmy coś razem",
 		"form": {
 			"heading": "Formularz kontaktowy",

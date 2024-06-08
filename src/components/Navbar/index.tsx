@@ -1,6 +1,6 @@
 import { Dictionary } from '@/app/[locale]/dictionaries'
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
-import { contactInfo } from '@/constants/contactInfo'
+import { CONTACT_INFO } from '@/constants/CONTACT_INFO'
 import { Locales } from '@/i18nConfig'
 import { cn, getDateLocale } from '@/lib/utils'
 import { format } from 'date-fns'
@@ -26,9 +26,9 @@ const Navbar = ({ dict, locale }: Props) => {
 			<DynamicBg />
 			<nav className='relative flex items-center justify-between mix-blend-difference'>
 				<div className='hidden items-center gap-6 lg:flex'>
-					<Link href={`mailto:${contactInfo.email}`} className='group py-0.5 text-sm uppercase hover:underline'>
+					<Link href={`mailto:${CONTACT_INFO.email}`} className='group py-0.5 text-sm uppercase hover:underline'>
 						<Magnetic as='p' strength={{ x: 0.1, y: 0.3 }}>
-							<span className='transition-elastic-out block group-active:scale-90'>{contactInfo.email}</span>
+							<span className='transition-elastic-out block group-active:scale-90'>{CONTACT_INFO.email}</span>
 						</Magnetic>
 					</Link>
 					<div className='flex items-center gap-1.5'>

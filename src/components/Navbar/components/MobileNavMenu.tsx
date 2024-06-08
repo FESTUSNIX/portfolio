@@ -4,7 +4,7 @@ import { Dictionary } from '@/app/[locale]/dictionaries'
 import { Portal } from '@/components/Portal'
 import { NAV_LINKS } from '@/constants/NAV_LINKS'
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
-import { contactInfo } from '@/constants/contactInfo'
+import { CONTACT_INFO } from '@/constants/CONTACT_INFO'
 import { useScrollBlock } from '@/hooks/useScrollBlock'
 import { Locales } from '@/i18nConfig'
 import { cn, getDateLocale } from '@/lib/utils'
@@ -83,9 +83,9 @@ export const MobileNavMenu = ({ dict, locale }: { dict: Dictionary; locale: Loca
 							<div className='flex w-full max-w-sm flex-col justify-between gap-y-12 justify-self-center'>
 								<div className='space-y-2 pt-4'>
 									<Link
-										href={`mailto:${contactInfo.email}`}
+										href={`mailto:${CONTACT_INFO.email}`}
 										className='flex items-center gap-4 text-lg uppercase hover:underline'>
-										<span className='shrink-0'>{contactInfo.email}</span>
+										<span className='shrink-0'>{CONTACT_INFO.email}</span>
 										<div className='h-px w-full bg-foreground' />
 									</Link>
 

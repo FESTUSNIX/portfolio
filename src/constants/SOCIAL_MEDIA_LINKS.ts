@@ -1,10 +1,4 @@
-import { Facebook, Github, Linkedin, LucideProps, Twitter, type LucideIcon } from 'lucide-react'
-
-type SocialMediaLink = {
-	href: string
-	name: string
-	Icon: LucideIcon | ((props: LucideProps) => JSX.Element)
-}
+import { Facebook, Github, Linkedin, Twitter } from 'lucide-react'
 
 export const SOCIAL_MEDIA_LINKS = {
 	github: {

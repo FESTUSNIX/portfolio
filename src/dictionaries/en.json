@@ -1,10 +1,14 @@
 {
 	"locale": "en",
-	"pageMeta": {
+	"openGraph": {
 		"title": "Mateusz Hada | Web Developer",
 		"description": "Crafting seamless digital experiences that captivate and innovate. I'm Mateusz, a passionate Web Developer & Freelancer, turning ideas into realities."
 	},
 	"home": {
+		"metadata": {
+			"title": "Mateusz Hada | Freelance Developer & Designer",
+			"description": "Freelance web developer & designer from Poland. Crafting modern, interactive websites and web applications accessible to everyone."
+		},
 		"hero": {
 			"greeting": "Hello, I'm",
 			"subheading": "Freelance web developer & designer based in poland"
@@ -32,6 +36,10 @@
 		}
 	},
 	"contact": {
+		"metadata": {
+			"title": "Contact",
+			"description": "Get in touch with me to discuss your project, ask a question or just say hello. I'm always open to new opportunities and collaborations."
+		},
 		"heading": "Get in touch",
 		"form": {
 			"heading": "Contact form",

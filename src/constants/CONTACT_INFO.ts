@@ -1,3 +1,3 @@
-export const contactInfo = {
+export const CONTACT_INFO = {
 	email: 'hello@mateuszhada.com'
 }

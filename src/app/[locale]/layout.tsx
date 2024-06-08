@@ -19,7 +19,7 @@ const heading = localFont({
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
 	const {
-		pageMeta: { description, title }
+		openGraph: { description, title }
 	} = await getDictionary(locale)
 
 	return {

@@ -1,5 +1,5 @@
 import ContactEmailTemplate from '@/components/ContactEmailTemplate'
-import { contactInfo } from '@/constants/contactInfo'
+import { CONTACT_INFO } from '@/constants/CONTACT_INFO'
 import { mailTransporter } from '@/lib/nodemailer/transporter'
 import { ContactEmailValidator } from '@/lib/validators/contactForm'
 import { render } from '@react-email/render'
@@ -15,8 +15,8 @@ export async function POST(req: Request) {
 		const emailHtml = render(ContactEmailTemplate({ name, email, message }))
 
 		const data = await mailTransporter.sendMail({
-			from: `"Contact Form" <${contactInfo.email}>`,
-			to: [`${contactInfo.email}`],
+			from: `"Contact Form" <${CONTACT_INFO.email}>`,
+			to: [`${CONTACT_INFO.email}`],
 			subject: `Contact Form - ${email}`,
 			text: plainText,
 			html: emailHtml
