@@ -83,6 +83,11 @@
 			"contact": "Contact Me"
 		}
 	},
+	"currentlyPlaying": {
+		"listeningTo": "Listening to",
+		"by": "by",
+		"on": "on"
+	},
 	"global": {
 		"next": "Next",
 		"previous": "Previous",

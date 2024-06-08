@@ -1,5 +1,6 @@
 import { SOCIAL_MEDIA_LINKS } from '@/constants/SOCIAL_MEDIA_LINKS'
 import Link from 'next/link'
+import { CurrentlyPlaying } from './CurrentlyPlaying'
 import { Magnetic } from './Magnetic'
 
 type Props = {}
@@ -10,7 +11,10 @@ export const Footer = (props: Props) => {
 	return (
 		<footer className='grid-container mt-auto py-6 md:py-8'>
 			<div className='flex flex-row flex-wrap-reverse justify-between gap-x-16 gap-y-6'>
-				<p className='uppercase'>© Mateusz Hada {year}</p>
+				<div className='flex flex-wrap-reverse items-center gap-x-6 gap-y-2 md:gap-x-12'>
+					<p className='uppercase'>© Mateusz Hada {year}</p>
+					<CurrentlyPlaying />
+				</div>
 
 				<ul className='flex flex-wrap-reverse items-center gap-x-4'>
 					{Object.values(SOCIAL_MEDIA_LINKS).map(link => (
