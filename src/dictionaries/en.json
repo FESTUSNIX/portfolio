@@ -86,6 +86,11 @@
 	"global": {
 		"next": "Next",
 		"previous": "Previous",
-		"close": "Close"
+		"close": "Close",
+		"changeLanguage": "Change language to",
+		"locales": {
+			"en": "English",
+			"pl": "Polish"
+		}
 	}
 }

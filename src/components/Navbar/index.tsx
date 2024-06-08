@@ -1,6 +1,6 @@
 import { Dictionary } from '@/app/[locale]/dictionaries'
-import { NAV_LINKS } from '@/constants/NAV_LINKS'
 import { CONTACT_INFO } from '@/constants/CONTACT_INFO'
+import { NAV_LINKS } from '@/constants/NAV_LINKS'
 import { Locales } from '@/i18nConfig'
 import { cn, getDateLocale } from '@/lib/utils'
 import { format } from 'date-fns'
@@ -38,7 +38,6 @@ const Navbar = ({ dict, locale }: Props) => {
 							<span className='font-bold'>{format(new Date(), 'LLLL yyyy', { locale: getDateLocale(locale) })}</span>
 						</p>
 					</div>
-					<LanguageChanger />
 				</div>
 
 				<Link
@@ -50,23 +49,27 @@ const Navbar = ({ dict, locale }: Props) => {
 					</Magnetic>
 				</Link>
 
-				<MobileNavMenu dict={dict} locale={locale} />
-
-				<ul className={'hidden items-center gap-6 sm:flex'}>
-					{NAV_LINKS.map((link, i) => (
-						<li key={link.href} className='group'>
-							<Link
-								href={link.href}
-								className='border-foreground text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border'>
-								<Magnetic strength={{ x: 0.1, y: 0.3 }} className='py-0.5 group-last:px-3 group-last:py-1'>
-									<span className='transition-elastic-out block group-active:scale-90'>
-										{dict.navigation.links[link.accessorKey as keyof typeof dict.navigation.links]}
-									</span>
-								</Magnetic>
-							</Link>
-						</li>
-					))}
-				</ul>
+				<div className='flex items-center gap-4 sm:gap-8'>
+					<Magnetic strength={{ x: 0.1, y: 0.3 }} className=''>
+						<LanguageChanger className='p-0.5 text-muted-foreground sm:text-foreground' />
+					</Magnetic>
+					<ul className={'hidden items-center gap-6 sm:flex'}>
+						{NAV_LINKS.map((link, i) => (
+							<li key={link.href} className='group'>
+								<Link
+									href={link.href}
+									className='border-foreground text-sm uppercase text-foreground hover:underline group-last:block group-last:rounded-full group-last:border'>
+									<Magnetic strength={{ x: 0.1, y: 0.3 }} className='py-0.5 group-last:px-3 group-last:py-1'>
+										<span className='transition-elastic-out block group-active:scale-90'>
+											{dict.navigation.links[link.accessorKey as keyof typeof dict.navigation.links]}
+										</span>
+									</Magnetic>
+								</Link>
+							</li>
+						))}
+					</ul>
+					<MobileNavMenu dict={dict} locale={locale} />
+				</div>
 			</nav>
 		</header>
 	)

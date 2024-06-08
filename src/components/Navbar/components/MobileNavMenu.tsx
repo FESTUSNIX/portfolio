@@ -58,7 +58,7 @@ export const MobileNavMenu = ({ dict, locale }: { dict: Dictionary; locale: Loca
 
 	return (
 		<>
-			<FocusLock disabled={!isOpen || isDesktop} group='navbar'>
+			<FocusLock disabled={!isOpen || isDesktop} group='navbar' className='md:hidden'>
 				<div className={'z-50 text-foreground md:hidden'}>
 					<HamburgerIcon toggle={() => handleChange(!isOpen, 'inProgress')} toggled={isOpen} />
 				</div>
