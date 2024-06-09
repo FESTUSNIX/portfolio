@@ -4,6 +4,7 @@ import { Locales } from '@/i18nConfig'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dictionary } from '../../dictionaries'
+import ProgressiveBlur from '@/components/ProgressiveBlur'
 
 type Props = {
 	dict: Dictionary
@@ -33,7 +34,7 @@ export const ProjectsSection = ({
 						<Link
 							href={project.href}
 							target='_blank'
-							className='group relative block size-full overflow-hidden rounded-md'>
+							className='group relative block size-full overflow-hidden rounded-md border border-border'>
 							<div className='absolute inset-0 z-10 flex flex-col flex-wrap justify-between px-4 py-3 md:flex-row md:content-between md:items-start md:gap-4'>
 								<div className='w-max rounded-full border border-border bg-background/80 px-2 py-1 text-sm font-light uppercase leading-none text-foreground backdrop-blur-md'>
 									{project.name}
@@ -48,6 +49,10 @@ export const ProjectsSection = ({
 										</li>
 									))}
 								</ul>
+							</div>
+
+							<div className='absolute bottom-0 z-20 w-full translate-y-full border-t border-border/20 bg-muted/60 px-4 py-4 backdrop-blur-md duration-200 group-hover:translate-y-0'>
+								<p className='text-sm uppercase'>{project.description[locale as Locales]}</p>
 							</div>
 
 							<Image
