@@ -15,7 +15,7 @@ export const HeroSection = ({
 	}
 }: Props) => {
 	return (
-		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center pt-12 md:pt-24'>
+		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center overflow-hidden pt-12 md:pt-24'>
 			<div className='grid-container relative pt-24 md:pt-0 lg:pt-12'>
 				<h1 className='sr-only'>{greeting} Mateusz Hada</h1>
 

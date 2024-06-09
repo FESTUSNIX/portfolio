@@ -23,7 +23,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 	const dict = await getDictionary(locale)
 
 	return (
-		<main className='grid-container min-h-screen overflow-x-hidden'>
+		<main className='grid-container min-h-screen'>
 			<HeroSection dict={dict} />
 
 			<AboutMeSection dict={dict} />
