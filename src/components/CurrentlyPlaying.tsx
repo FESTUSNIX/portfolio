@@ -41,11 +41,11 @@ export const CurrentlyPlaying = (props: Props) => {
 	if (!data?.isPlaying || isLoading) return null
 
 	return (
-		<div className='flex items-center gap-2 text-sm uppercase'>
+		<div className='flex flex-wrap items-center gap-2 text-sm uppercase'>
 			<span className='order-1'>{t('currentlyPlaying.listeningTo')}</span>
 
-			<p className='order-3'>
-				<span className='max-w-64 truncate'>{data.title} </span>
+			<p className='order-3 flex items-center gap-[0.4em]'>
+				<span className='inline-block max-w-48 truncate'>{data.title} </span>
 				<span className='text-muted-foreground'>
 					{t('currentlyPlaying.by')} {data.artist}
 				</span>

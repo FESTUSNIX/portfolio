@@ -22,7 +22,7 @@ export const ContactCTASection = ({
 			<TypographyH2 className='flex items-end justify-between gap-8 uppercase'>
 				<span>{heading}</span>
 				<ArrowDownLeft
-					className='hidden aspect-square h-[1em] w-auto shrink-0 translate-x-[10%] translate-y-[5%] stroke-2 min-[360px]:block'
+					className='hidden aspect-square h-[1em] w-auto shrink-0 translate-x-[10%] translate-y-[5%] stroke-2 sm:block'
 					strokeLinecap='butt'
 					strokeLinejoin='round'
 					aria-hidden
