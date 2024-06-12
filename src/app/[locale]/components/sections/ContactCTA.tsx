@@ -1,4 +1,5 @@
 import { Magnetic } from '@/components/Magnetic'
+import { VortexBackground } from '@/components/VortexBackground'
 import TypographyH2 from '@/components/ui/Typography/H2'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -33,13 +34,22 @@ export const ContactCTASection = ({
 				href={'/contact'}
 				className={cn(
 					buttonVariants(),
-					'group overflow-hidden rounded-full p-0 text-3xl leading-none sm:text-4xl md:text-5xl lg:text-6xl'
+					'group overflow-hidden rounded-full border border-border p-0 text-3xl leading-none sm:text-4xl md:bg-transparent md:text-5xl md:text-foreground lg:text-6xl'
 				)}>
-				<Magnetic
-					strength={{ x: 0.1 }}
-					className='block w-full rounded-full py-8 text-center hover:underline sm:py-10 md:py-12 lg:py-16'>
-					<span className='transition-elastic-out block group-active:scale-90'>{button}</span>
-				</Magnetic>
+				<VortexBackground
+					rangeHue={360}
+					particleCount={300}
+					rangeTTL={400}
+					rangeSpeed={0.2}
+					particleGlowMode='light'
+					canvasClassName='saturate-0 duration-300 hidden group-hover:scale-110 group-hover:saturate-100 blur-0 group-hover:blur-0 md:flex'
+					className='md:mix-blend-difference'>
+					<Magnetic
+						strength={{ x: 0.1 }}
+						className='block w-full rounded-full py-8 text-center hover:underline sm:py-10 md:py-12 lg:py-16'>
+						<span className='transition-elastic-out block group-active:scale-90'>{button}</span>
+					</Magnetic>
+				</VortexBackground>
 			</Link>
 		</section>
 	)
