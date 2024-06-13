@@ -34,7 +34,7 @@ export const ContactCTASection = ({
 				href={'/contact'}
 				className={cn(
 					buttonVariants(),
-					'group overflow-hidden rounded-full border border-border p-0 text-3xl leading-none sm:text-4xl md:bg-transparent md:text-5xl md:text-foreground lg:text-6xl'
+					'group overflow-hidden rounded-full border border-border bg-transparent p-0 text-3xl leading-none text-foreground sm:text-4xl md:text-5xl lg:text-6xl'
 				)}>
 				<VortexBackground
 					rangeHue={360}
@@ -42,8 +42,9 @@ export const ContactCTASection = ({
 					rangeTTL={400}
 					rangeSpeed={0.2}
 					particleGlowMode='light'
-					canvasClassName='saturate-0 duration-300 hidden group-hover:scale-110 group-hover:saturate-100 blur-0 group-hover:blur-0 md:flex'
-					className='md:mix-blend-difference'>
+					canvasClassName='saturate-0 duration-300 group-hover:scale-110 group-hover:saturate-100 blur-0 group-hover:blur-0 flex'
+					containerClassName='overflow-hidden rounded-full'
+					className='overflow-hidden rounded-full mix-blend-difference'>
 					<Magnetic
 						strength={{ x: 0.1 }}
 						className='block w-full rounded-full py-8 text-center hover:underline sm:py-10 md:py-12 lg:py-16'>

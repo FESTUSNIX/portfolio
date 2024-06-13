@@ -45,7 +45,7 @@ const Navbar = ({ dict, locale }: Props) => {
 					className='group z-50 w-max lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
 					<Magnetic strength={{ x: 0.15 }}>
 						<span className='sr-only'>{dict.navigation.links.home}</span>
-						<Logo className='group-hover:rainbow-background h-6 w-auto fill-foreground [clip-path:url("#brand-logo-clip")] group-hover:fill-transparent' />
+						<Logo className='h-6 w-auto fill-foreground [clip-path:url("#brand-logo-clip")]' />
 					</Magnetic>
 				</Link>
 
