@@ -4,7 +4,6 @@ import { Locales } from '@/i18nConfig'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dictionary } from '../../dictionaries'
-import ProgressiveBlur from '@/components/ProgressiveBlur'
 
 type Props = {
 	dict: Dictionary
@@ -19,7 +18,7 @@ export const ProjectsSection = ({
 	}
 }: Props) => {
 	return (
-		<section id='projects' className='mt-32 scroll-m-20 md:mt-36 xl:mt-48'>
+		<section id='projects' className='z-10 mt-36 scroll-m-20 md:mt-40 xl:mt-48'>
 			<TypographyH2 className='mb-12 text-right'>
 				<span className='block'>{heading.top} </span>
 				<span className='flex items-center gap-4 sm:gap-8 lg:gap-12'>

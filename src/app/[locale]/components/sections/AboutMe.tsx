@@ -13,7 +13,7 @@ export const AboutMeSection = ({
 	}
 }: Props) => {
 	return (
-		<section className='mt-16 lg:mt-36 xl:mt-48'>
+		<section className='z-0 mt-16 lg:mt-36 xl:mt-48'>
 			<TextRevealContainer wrapperClassName='mt-[-30vh] mb-[-30vh] md:mt-[-45vh] md:mb-[-45vh]'>
 				<div className='flex w-full flex-col gap-6 md:gap-8 lg:flex-row lg:justify-between lg:gap-12'>
 					<TextReveal

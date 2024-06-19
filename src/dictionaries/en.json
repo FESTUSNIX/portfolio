@@ -20,8 +20,13 @@
 		"projects": {
 			"heading": { "top": "My latest", "bottom": "works" }
 		},
+		"tools": {
+			"heading": "Tools I use"
+		},
 		"testimonials": {
-			"heading": "See what people have to say"
+			"heading": "See what people have to say",
+			"translatedFrom": "Translated from",
+			"goBack": "Go back to"
 		},
 		"contactCTA": {
 			"heading": "Let's work together",

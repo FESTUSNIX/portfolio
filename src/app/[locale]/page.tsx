@@ -7,6 +7,7 @@ import { ContactCTASection } from './components/sections/ContactCTA'
 import { HeroSection } from './components/sections/Hero'
 import { ProjectsSection } from './components/sections/Projects'
 import { TestimonialsSection } from './components/sections/Testimonials'
+import { ToolsSection } from './components/sections/Tools'
 import { getDictionary } from './dictionaries'
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locales } }): Promise<Metadata> {
@@ -29,6 +30,8 @@ export default async function Home({ params: { locale } }: { params: { locale: L
 			<AboutMeSection dict={dict} />
 
 			<ProjectsSection dict={dict} />
+
+			<ToolsSection dict={dict} />
 
 			<TestimonialsSection dict={dict} />
 
