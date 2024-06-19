@@ -50,10 +50,10 @@ export const HeroSection = ({
 							<Image
 								src='/images/me-horizontal.png'
 								alt='Mateusz Hada'
-								width={600}
-								height={400}
+								width={700}
+								height={500}
 								priority
-								className='pointer-events-none size-full rounded-sm object-cover shadow-md'
+								className='pointer-events-none aspect-[320/169] size-full rounded-sm object-cover shadow-md'
 							/>
 						</Magnetic>
 					</div>
