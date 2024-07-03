@@ -88,7 +88,7 @@ export const Board = ({ serverEmojis }: Props) => {
 			<div
 				ref={containerRef}
 				className='group/container relative h-full w-full cursor-none overflow-hidden [clip-path:inset(0)]'>
-				<div className='fixed inset-0 -z-20 bg-dot-white/15' />
+				<div className='absolute inset-0 -z-20 bg-dot-white/15' />
 				{emojis?.map(emoji => (
 					<svg
 						key={emoji.id}

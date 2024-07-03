@@ -15,7 +15,7 @@ export const HeroSection = ({
 	}
 }: Props) => {
 	return (
-		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center overflow-hidden pt-12 md:pt-24'>
+		<header className='container-fill relative flex h-max min-h-screen flex-col justify-center overflow-hidden pt-12 supports-[overflow:clip]:overflow-x-clip supports-[overflow:clip]:overflow-y-visible md:pt-24'>
 			<div className='grid-container relative pt-24 md:pt-0 lg:pt-12'>
 				<h1 className='sr-only'>{greeting} Mateusz Hada</h1>
 
@@ -48,7 +48,7 @@ export const HeroSection = ({
 					<div className='hero-img absolute -right-[5%] top-6 z-[25] w-[75%] max-w-md -translate-y-1/2 rotate-3 rounded-sm duration-300 hover:!blur-0 group-has-[.hero-img:hover]:blur-md md:left-0 md:top-[28%] md:w-[45%] md:max-w-none md:rotate-0 lg:left-[2.5%] lg:top-[26%] lg:z-20 lg:-rotate-3'>
 						<Magnetic strength={{ x: 0.1, y: 0.1 }}>
 							<Image
-								src='/images/me-horizontal.png'
+								src='/images/me-horizontal.webp'
 								alt='Mateusz Hada'
 								width={700}
 								height={500}
@@ -60,7 +60,7 @@ export const HeroSection = ({
 					<div className='hero-img absolute bottom-[10%] left-[2%] z-10 w-[50%] max-w-64 translate-y-full -rotate-6 rounded-sm duration-300 hover:!blur-0 group-has-[.hero-img:hover]:blur-md md:bottom-[53.5%] md:left-auto md:right-0 md:w-[31%] md:max-w-none md:rotate-0 lg:bottom-[65%] lg:rotate-6'>
 						<Magnetic strength={{ x: 0.1, y: 0.1 }}>
 							<Image
-								src='/images/me-vertical.png'
+								src='/images/me-vertical.webp'
 								alt='Mateusz Hada kickboxing'
 								width={600}
 								height={800}
