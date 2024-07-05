@@ -49,7 +49,7 @@ const LanguageChanger = ({ className }: Props) => {
 				{t('global.changeLanguage')} {t(`global.locales.${(currentLocale ?? 'en') === 'en' ? 'pl' : 'en'}`)}
 			</span>
 			<span className='text-sm uppercase'>
-				{isPending ? <Loader2 className='size-3 animate-spin' /> : currentLocale}
+				{isPending ? <Loader2 className='size-3 animate-spin' /> : currentLocale === 'en' ? 'pl' : 'en'}
 			</span>
 		</button>
 	)
