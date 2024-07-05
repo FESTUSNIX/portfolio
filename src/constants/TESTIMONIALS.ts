@@ -1,121 +1,58 @@
+import { Locales } from '@/i18nConfig'
+
 export type Testimonial = {
 	id: number
 	name: string
 	role: string
-	quote: string
+	quote: Record<Locales, string> & { default: Locales }
 	image: string
-}
-
-const getRandomPortret = async () => {
-	const res = await fetch('https://randomuser.me/api/', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
-
-	const data = await res.json()
-
-	return data.results[0].picture.large
 }
 
 export const getTestimonials = async (): Promise<Testimonial[]> => {
 	return [
 		{
 			id: 1,
-			name: 'Julian von Dandelion',
-			role: 'CEO at Corvo Bianco',
-			quote:
-				'Lorem ipsum dolor sit amet consecteur adpiscing elit, Festus emhyr var emreis aep ignii, axii oot zirael. Aard niflgaard ratt gwint cirilla',
-			image: await getRandomPortret()
+			name: 'Andrzej Gotfryd',
+			role: "Powierzchnie Reklamowe & Helena's Sailing",
+			quote: {
+				en: 'The website made by Mateusz is a hit. Aesthetics, functionality and clarity - all at the highest level. Would recommend 💯',
+				pl: 'Strona internetowa wykonana przez Mateusza to strzał w dziesiątkę. Estetyka, funkcjonalność i przejrzystość - wszystko na najwyższym poziomie. Polecam 💯',
+				default: 'pl'
+			},
+			image: '/images/testimonials/andrzej-gotfryd.webp'
 		},
 		{
 			id: 2,
-			name: 'Geralt of Rivia',
-			role: 'Witcher',
-			quote:
-				'Mateusz is the best developer I have ever worked with. He is always on time and delivers high quality work.',
-			image: await getRandomPortret()
+			name: 'Marcin Niemczyk',
+			role: 'CEO H2O Wod-Kan, Gaz, C.O.',
+			quote: {
+				en: 'Our team is very satisfied with the cooperation. Mateusz helped us to become known on the web in a very short time. It was a pleasure to work with him.',
+				pl: 'Nasz zespół jest bardzo zadowolony z współpracy. Mateusz pomógł nam zaistnieć w internecie w bardzo krótkim czasie. Praca z nim była przyjemnością.',
+				default: 'pl'
+			},
+			image: '/images/testimonials/marcin-niemczyk.webp'
 		},
 		{
 			id: 3,
-			name: 'Yennefer of Vengerberg',
-			role: 'Lodge of Sorceresses',
-			quote:
-				'Working with Mateusz was a pleasure. There was no need for any revisions, he got it right the first time. He also has a great sense of humor.',
-			image: await getRandomPortret()
+			name: 'Krzysztof Kulawik',
+			role: "Helena's Sailing",
+			quote: {
+				en: 'Matthew understood our needs perfectly and created a website that reflects them perfectly. As a freebie, he also helped us with our social media branding. It was a great investment.',
+				pl: 'Mateusz doskonale zrozumiał nasze potrzeby i stworzył stronę, która idealnie je odzwierciedla. W gratisie pomógł nam także z kreowaniem naszej marki w social mediach. To była świetna inwestycja.',
+				default: 'pl'
+			},
+			image: '/images/testimonials/krzysztof-kulawik.webp'
 		},
 		{
 			id: 4,
-			name: 'Triss Merigold',
-			role: 'Lodge of Sorceresses',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 5,
-			name: 'Ciri',
-			role: 'Witcher',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 6,
-			name: 'Regis',
-			role: 'Higher Vampire',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 7,
-			name: 'Dandelion',
-			role: 'Bard',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 8,
-			name: 'Zoltan Chivay',
-			role: 'Dwarf',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 9,
-			name: 'Vernon Roche',
-			role: 'Temerian Special Forces',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 10,
-			name: 'Lambert',
-			role: 'Witcher',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 11,
-			name: 'Eskel',
-			role: 'Witcher',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
-		},
-		{
-			id: 12,
-			name: 'Vesemir',
-			role: 'Witcher',
-			quote:
-				'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
-			image: await getRandomPortret()
+			name: 'Damian Urbańczyk',
+			role: 'Studia dla Nauczycieli',
+			quote: {
+				en: 'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
+				pl: 'Mateusz to świetny programista. Jest bardzo profesjonalny i zawsze dostarcza na czas. Poleciłbym go każdemu.',
+				default: 'en'
+			},
+			image: '/images/testimonials/damian-urbanczyk.webp'
 		}
 	]
 }

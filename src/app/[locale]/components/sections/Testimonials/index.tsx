@@ -1,6 +1,7 @@
 import { Dictionary } from '@/app/[locale]/dictionaries'
 import TypographyH2 from '@/components/ui/Typography/H2'
 import { getTestimonials } from '@/constants/TESTIMONIALS'
+import { Locales } from '@/i18nConfig'
 import { cn } from '@/lib/utils'
 import { TestimonialsContent } from './components/TestimonialsContent'
 
@@ -26,7 +27,7 @@ export const TestimonialsSection = async ({
 			</TypographyH2>
 
 			<div className='relative py-24 [clip-path:inset(-1rem)]'>
-				<TestimonialsContent testimonials={testimonials} />
+				<TestimonialsContent testimonials={testimonials} locale={locale as Locales} />
 
 				<div className='fixed inset-0 -z-10'>
 					<div className={cn('pointer-events-none absolute inset-0 -z-20 w-full bg-background bg-dot-white/25')}></div>

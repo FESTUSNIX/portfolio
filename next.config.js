@@ -29,9 +29,6 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				hostname: 'i.scdn.co'
-			},
-			{
-				hostname: 'randomuser.me'
 			}
 		]
 	}
