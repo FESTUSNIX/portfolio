@@ -18,7 +18,8 @@
 			"description": "Jestem 18-letnim web developerem z Polski. W wolnym czasie trenuję kickboxing, jeżdżę na rowerze i piję (odrobinę za dużo) kawy."
 		},
 		"projects": {
-			"heading": { "top": "Moje ostatnie", "bottom": "projekty" }
+			"heading": { "top": "Moje ostatnie", "bottom": "projekty" },
+			"cta": "Stwórzmy coś wspaniałego razem!"
 		},
 		"tools": {
 			"heading": "Technologie, które używam"

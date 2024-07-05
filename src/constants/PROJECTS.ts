@@ -43,17 +43,17 @@ export const PROJECTS: Project[] = [
 			pl: 'Firma wynajmująca powierzchnie reklamowe',
 			en: 'Company renting advertising spaces'
 		}
-	},
-	{
-		href: 'https://sdn-theta.vercel.app/',
-		name: 'Studia Dla Nauczycieli',
-		image: SDNPreview,
-		tags: ['UI_UX_DESIGN', 'DEVELOPMENT', 'STARTUP'],
-		description: {
-			pl: 'Wyszukiwarka studiów podyplomowych dla nauczycieli',
-			en: 'Postgraduate studies finder'
-		}
 	}
+	// {
+	// 	href: 'https://sdn-theta.vercel.app/',
+	// 	name: 'Studia Dla Nauczycieli',
+	// 	image: SDNPreview,
+	// 	tags: ['UI_UX_DESIGN', 'DEVELOPMENT', 'STARTUP'],
+	// 	description: {
+	// 		pl: 'Wyszukiwarka studiów podyplomowych dla nauczycieli',
+	// 		en: 'Postgraduate studies finder'
+	// 	}
+	// }
 ]
 
 type ProjectTagKeys = 'UI_UX_DESIGN' | 'DEVELOPMENT' | 'MARKETING' | 'BRAND_ASSETS' | 'STARTUP'

@@ -18,7 +18,8 @@
 			"description": "I'm an 18-year-old web developer from Poland. When I'm not working, you'll find me kickboxing, cycling and drinking (a bit to much) coffee."
 		},
 		"projects": {
-			"heading": { "top": "My latest", "bottom": "works" }
+			"heading": { "top": "My latest", "bottom": "works" },
+			"cta": "Let's create something together!"
 		},
 		"tools": {
 			"heading": "Tools I use"

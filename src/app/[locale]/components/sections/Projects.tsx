@@ -4,6 +4,7 @@ import { Locales } from '@/i18nConfig'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dictionary } from '../../dictionaries'
+import { NewProjectCard } from '../NewProjectCard'
 
 type Props = {
 	dict: Dictionary
@@ -13,7 +14,7 @@ export const ProjectsSection = ({
 	dict: {
 		locale,
 		home: {
-			projects: { heading }
+			projects: { heading, cta }
 		}
 	}
 }: Props) => {
@@ -27,7 +28,7 @@ export const ProjectsSection = ({
 				</span>
 			</TypographyH2>
 
-			<ul className='grid gap-4 lg:grid-cols-2'>
+			<ul className='grid gap-4 md:grid-cols-2'>
 				{PROJECTS.map((project, i) => (
 					<li key={`project-${i}`} className='aspect-[4/3] h-auto w-full last:odd:col-span-full'>
 						<Link
@@ -62,6 +63,10 @@ export const ProjectsSection = ({
 						</Link>
 					</li>
 				))}
+
+				<li className='aspect-[4/3] h-auto w-full'>
+					<NewProjectCard text={cta} />
+				</li>
 			</ul>
 		</section>
 	)
