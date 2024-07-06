@@ -45,14 +45,14 @@ export const getTestimonials = async (): Promise<Testimonial[]> => {
 		},
 		{
 			id: 4,
-			name: 'Damian Urbańczyk',
-			role: 'Studia dla Nauczycieli',
+			name: 'Elon Musk',
+			role: 'CEO of Tesla & SpaceX',
 			quote: {
 				en: 'Mateusz is a great developer. He is very professional and always delivers on time. I would recommend him to anyone.',
 				pl: 'Mateusz to świetny programista. Jest bardzo profesjonalny i zawsze dostarcza na czas. Poleciłbym go każdemu.',
 				default: 'en'
 			},
-			image: '/images/testimonials/damian-urbanczyk.webp'
+			image: '/images/testimonials/person4.webp'
 		}
 	]
 }
