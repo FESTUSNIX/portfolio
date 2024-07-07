@@ -48,7 +48,7 @@ export const getTestimonials = async (): Promise<Testimonial[]> => {
 			name: 'Damian Urbańczyk',
 			role: 'SDN',
 			quote: {
-				en: 'Matthew, despite his young age, has a lot of experience in the field of website development, uses modern technologies, and above all, is 100% committed to his work.',
+				en: 'Mateusz, despite his young age, has a lot of experience in the field of website development, uses modern technologies, and above all, is 100% committed to his work.',
 				pl: 'Mateusz, mimo młodego wieku, ma spore doświadczenie w zakresie tworzenia stron, stosuje nowoczesne technologie, a przede wszystkim angażuje się w swoją pracę w 100%',
 				default: 'pl'
 			},
