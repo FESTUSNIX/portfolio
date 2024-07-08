@@ -66,7 +66,7 @@ export const MobileNavMenu = ({ dict, locale }: { dict: Dictionary; locale: Loca
 			<Portal>
 				<motion.div
 					className={cn(
-						'fixed inset-0 z-40 flex h-screen items-center justify-center bg-background/40 text-foreground mix-blend-difference backdrop-blur-3xl backdrop-sepia-[20%] md:hidden',
+						'fixed inset-0 z-40 flex h-screen items-center justify-center bg-background/40 text-foreground backdrop-blur-3xl backdrop-sepia-[20%] md:hidden',
 						animationState === 'open' && 'visible',
 						animationState === 'closed' && 'invisible hidden',
 						!isOpen && 'hidden'

@@ -232,6 +232,16 @@ export const VortexBackground = ({ particleGlowMode = 'light', ...props }: Props
 		})
 	}, [])
 
+	const isIOS = () => {
+		if (typeof navigator === 'undefined' || !navigator) return false
+
+		return (
+			['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+			// iPad on iOS 13 detection
+			(navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+		)
+	}
+
 	return (
 		<div className={cn('relative h-full w-full', props.containerClassName)}>
 			<motion.div
@@ -240,7 +250,8 @@ export const VortexBackground = ({ particleGlowMode = 'light', ...props }: Props
 				ref={containerRef}
 				className={cn(
 					'absolute inset-0 -z-10 flex h-full w-full items-center justify-center bg-transparent',
-					props.canvasClassName
+					props.canvasClassName,
+					isIOS() && '!blur-[2px]'
 				)}>
 				<canvas ref={canvasRef}></canvas>
 			</motion.div>

@@ -21,7 +21,7 @@ export const NewProjectCard = ({ text }: Props) => {
 					rangeY={300}
 					rangeSpeed={0.2}
 					particleGlowMode='light'
-					canvasClassName='saturate-0 duration-300 group-hover:scale-110 group-hover:saturate-100 blur-0 group-hover:blur-0 flex'
+					canvasClassName='saturate-0 duration-300 group-hover:scale-110 group-hover:saturate-100 flex'
 					containerClassName='overflow-hidden relative'
 					className='h-full'>
 					<Magnetic strength={{ x: 0.05, y: 0.05 }} className='flex h-full w-full flex-col items-center justify-center'>
