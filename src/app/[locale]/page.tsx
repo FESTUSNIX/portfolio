@@ -17,7 +17,13 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 	return {
 		title: metadata.title,
-		description: metadata.description
+		description: metadata.description,
+		alternates: {
+			canonical: '/',
+			languages: {
+				pl: '/pl'
+			}
+		}
 	}
 }
 export default async function Home({ params: { locale } }: { params: { locale: Locales } }) {
