@@ -89,6 +89,10 @@
 			"contact": "Contact Me"
 		}
 	},
+	"404": {
+		"heading": "Page not found",
+		"description": "We couldn't find the page you were looking for. Please check the URL or go back to the homepage."
+	},
 	"currentlyPlaying": {
 		"listeningTo": "Listening to",
 		"by": "by",

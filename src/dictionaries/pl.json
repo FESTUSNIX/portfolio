@@ -89,6 +89,10 @@
 			"contact": "Kontakt"
 		}
 	},
+	"404": {
+		"heading": "Strona nie odnaleziona",
+		"description": "Nie udało nam się odnaleźć strony, której szukasz. Sprawdź URL lub wróć na stronę główną."
+	},
 	"currentlyPlaying": {
 		"listeningTo": "Słucham",
 		"by": "-",
