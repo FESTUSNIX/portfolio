@@ -34,7 +34,7 @@ export const ContactCTASection = ({
 				href={'/contact'}
 				className={cn(
 					buttonVariants(),
-					'group overflow-hidden rounded-full border border-border bg-transparent p-0 text-3xl leading-none text-foreground sm:text-4xl md:text-5xl lg:text-6xl'
+					'group overflow-hidden rounded-full border border-foreground bg-transparent p-0 text-3xl leading-none text-foreground sm:text-4xl md:text-5xl lg:text-6xl'
 				)}>
 				<VortexBackground
 					rangeHue={360}
