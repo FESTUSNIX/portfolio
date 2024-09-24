@@ -14,6 +14,7 @@ type Props = {
 	rotation: number
 	containerDOMRect: DOMRectValues | undefined
 	setSelectedEmoji: (emoji: string | null) => void
+	setHasAlreadyAddedEmoji: (hasAlreadyAddedEmoji: boolean) => void
 	translateFn: TranslationFn
 }
 
@@ -23,12 +24,13 @@ export const AddButton = ({
 	position,
 	rotation,
 	setSelectedEmoji,
-	translateFn
+	translateFn,
+	setHasAlreadyAddedEmoji
 }: Props) => {
 	const supabase = createClient()
 
 	const [isLoading, setIsLoading] = useState(false)
-	const [_, setHasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
+	const [_, setStorageHasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
 
 	const handleConfirm = async () => {
 		if (!selectedEmoji) return
@@ -49,6 +51,7 @@ export const AddButton = ({
 			console.error('Error inserting emoji:', error)
 		} else {
 			setHasAlreadyAddedEmoji(true)
+			setStorageHasAlreadyAddedEmoji(true)
 		}
 
 		setSelectedEmoji(null)

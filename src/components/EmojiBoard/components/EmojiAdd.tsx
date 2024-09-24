@@ -32,7 +32,8 @@ export const EmojiAdd = ({ className }: Props) => {
 	const [hasMounted, setHasMounted] = useState(false)
 
 	const emojiElement = useRef<HTMLDivElement>(null)
-	const [hasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
+	const [_hasAlreadyAddedEmoji] = useLocalStorage('hasAlreadyAddedEmoji', false)
+	const [hasAlreadyAddedEmoji, setHasAlreadyAddedEmoji] = useState(_hasAlreadyAddedEmoji)
 
 	const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null)
 	const [hasTouchedEmoji, setHasTouchedEmoji] = useState(false)
@@ -65,6 +66,7 @@ export const EmojiAdd = ({ className }: Props) => {
 						rotation={rotation}
 						containerDOMRect={containerDOMRect}
 						setSelectedEmoji={setSelectedEmoji}
+						setHasAlreadyAddedEmoji={setHasAlreadyAddedEmoji}
 						translateFn={t}
 					/>
 				</Suspense>
@@ -104,10 +106,11 @@ export const EmojiAdd = ({ className }: Props) => {
 						startAtCenter
 						containerRef={container}
 						onDragChange={setIsDragging}
-						onPositionChange={setPosition}>
+						onPositionChange={setPosition}
+						className='size-32'>
 						<RotatableWrapper onRotationChange={setRotation}>
 							<div
-								className='flex aspect-square size-24 cursor-move items-center justify-center saturate-0 active:cursor-grabbing'
+								className='flex aspect-square size-24 translate-y-4 cursor-move items-center justify-center saturate-0 active:cursor-grabbing'
 								style={{ width: (containerDOMRect?.width ?? 0) * 0.1 }}
 								ref={emojiElement}
 								onMouseDown={() => {

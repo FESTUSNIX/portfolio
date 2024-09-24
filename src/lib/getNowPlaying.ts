@@ -27,7 +27,6 @@ type SpotifyData = {
 }
 
 const getAccessToken = async () => {
-	console.log('getAccessToken')
 	const res = await fetch(TOKEN_ENDPOINT, {
 		method: 'POST',
 		headers: {
@@ -45,7 +44,6 @@ const getAccessToken = async () => {
 }
 
 export const getNowPlaying = async () => {
-	console.log('getNowPlaying')
 	const access_token = await getAccessToken()
 
 	return await fetch(NOW_PLAYING_ENDPOINT, {

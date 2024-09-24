@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import React, { useEffect, useRef, useState } from 'react'
 
 interface DraggableWrapperProps {
@@ -6,6 +7,7 @@ interface DraggableWrapperProps {
 	onDragChange?: (isDragging: boolean) => void
 	onPositionChange?: (position: { x: number; y: number }) => void
 	startAtCenter?: boolean
+	className?: string
 }
 
 const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
@@ -13,7 +15,8 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
 	containerRef,
 	onDragChange,
 	onPositionChange,
-	startAtCenter = false
+	startAtCenter = false,
+	className
 }) => {
 	const [isDragging, setIsDragging] = useState(false)
 	const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -114,7 +117,7 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
 	return (
 		<div
 			ref={elementRef}
-			className='absolute'
+			className={cn('absolute', className)}
 			style={{ left: `${position.x}px`, top: `${position.y}px` }}
 			onMouseDown={handleMouseDown}
 			onTouchStart={handleTouchStart}>

@@ -1,13 +1,11 @@
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
-import { User } from '@supabase/supabase-js'
 import useDidMount from 'beautiful-react-hooks/useDidMount'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 import { useEffect, useRef, useState } from 'react'
 import { Emoji } from '..'
 import { CustomCursor } from './CustomCursor'
-import { RealtimeCursors } from './RealtimeCursors'
 
 type Props = {
 	serverEmojis: Emoji[] | null
@@ -21,30 +19,6 @@ export const Board = ({ serverEmojis }: Props) => {
 
 	const [hasMounted, setHasMounted] = useState(false)
 	const [emojis, setEmojis] = useState<Emoji[] | null>(serverEmojis)
-	const [user, setUser] = useState<User | null>(null)
-
-	const handleAnonSignIn = async () => {
-		if (user) return
-
-		const {
-			data: { user: currentUser }
-		} = await supabase.auth.getUser()
-
-		if (currentUser) {
-			return setUser(currentUser)
-		}
-
-		const {
-			data: { user: newUser }
-		} = await supabase.auth.signInAnonymously()
-
-		if (newUser) setUser(newUser)
-	}
-
-	useEffect(() => {
-		handleAnonSignIn()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
 
 	useEffect(() => {
 		const channel = supabase
@@ -105,7 +79,6 @@ export const Board = ({ serverEmojis }: Props) => {
 					</svg>
 				))}
 
-				{user && <RealtimeCursors client={supabase} userId={user.id} />}
 				<CustomCursor containerRef={containerRef} />
 			</div>
 		</>
