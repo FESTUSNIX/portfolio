@@ -29,6 +29,14 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				hostname: 'i.scdn.co'
+			},
+			{
+				protocol: 'https',
+				hostname: 'source.unsplash.com'
+			},
+			{
+				protocol: 'https',
+				hostname: 'tygbzoyymsdqhweudrkg.supabase.co'
 			}
 		]
 	}

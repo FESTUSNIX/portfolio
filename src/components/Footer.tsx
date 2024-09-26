@@ -13,7 +13,7 @@ export const Footer = (props: Props) => {
 			<div className='flex flex-row flex-wrap-reverse justify-between gap-x-16 gap-y-6'>
 				<div className='flex flex-wrap-reverse items-center gap-x-6 gap-y-2 md:gap-x-12'>
 					<p className='uppercase'>© Mateusz Hada {year}</p>
-					<CurrentlyPlaying />
+					{/* <CurrentlyPlaying /> */}
 				</div>
 
 				<ul className='flex flex-wrap-reverse items-center gap-x-4'>

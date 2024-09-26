@@ -5,6 +5,8 @@ import { updateSession } from './lib/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
 	await updateSession(request)
+
+	if (request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/auth')) return
 	return i18nRouter(request, i18nConfig)
 }
 
