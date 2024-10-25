@@ -147,7 +147,7 @@ export const TestimonialsContent = ({ testimonials, locale }: Props) => {
 				testimonials={testimonials}
 				updateIndex={setTestimonial}
 				currentIndex={testimonialIndex}
-				range={[3, 4]}
+				range={[3, 5]}
 				direction='left'
 				className='absolute -bottom-12 right-0 md:right-12 lg:-bottom-16 lg:right-[15%]'
 			/>

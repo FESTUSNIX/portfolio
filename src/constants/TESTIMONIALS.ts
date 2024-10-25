@@ -53,6 +53,17 @@ export const getTestimonials = async (): Promise<Testimonial[]> => {
 				default: 'pl'
 			},
 			image: '/images/testimonials/damian-urbanczyk.webp'
-		}
+		},
+		{
+			id: 5,
+			name: 'Antoni Blonkowski',
+			role: 'FindAlikeMe',
+			quote: {
+				en: "Mateusz's design really met all my expectations. I am very impressed with the end result - the site looks fantastic and I am very happy with the direction he took it.",
+				pl: 'Design Mateusza naprawdę spełnił wszystkie moje oczekiwania. Jestem pod ogromnym wrażeniem efektu końcowego - strona wygląda fantastycznie i jestem bardzo zadowolony z kierunku, w którym ją poprowadził',
+				default: 'pl'
+			},
+			image: '/images/testimonials/antoni-blonkowski.webp'
+		},
 	]
 }
